@@ -1,0 +1,15 @@
+{
+  "name": "lacsso",
+  "version": "0.0.1",
+  "description": "A small css library with basic components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rancher/lacsso.git"
+  },
+  "author": "Rancher Labs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rancher/lacsso/issues"
+  },
+  "homepage": "https://github.com/rancher/lacsso#readme"
+}
