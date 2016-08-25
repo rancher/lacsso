@@ -1,0 +1,31 @@
+#grid {
+  .col {
+    background-color: $light-grey;
+    color: $mid-grey;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: .75em;
+  }
+}
+
+.fs1 {
+  .col {
+    background-color: $light-grey;
+    color: $mid-grey;
+    text-align: center;
+    padding: 20px;
+
+    &:hover {
+      background-color: $primary;
+      color: $secondary;
+    }
+
+    .icon {
+      font-size: 2em;
+    }
+
+    .mls {
+      display: block;
+    }
+  }
+}

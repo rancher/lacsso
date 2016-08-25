@@ -1,0 +1,71 @@
+.text-default {
+  color: $primary;
+}
+
+.text-disabled {
+  color: $primary;
+
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.text-secondary {
+  color: $secondary;
+
+}
+
+.text-success {
+  color: $success;
+}
+
+.text-info {
+  color: $info;
+}
+
+.text-warning {
+  color: $warning;
+}
+
+.text-error {
+  color: $error;
+}
+
+.bg-default {
+  background-color: $light-grey;
+  color: $dark-grey;
+}
+
+.bg-disabled {
+  background-color: $mid-grey;
+  color: $dark-grey;
+}
+
+.bg-primary {
+  @include button-bg($primary);
+  @include contrasted($primary);
+}
+.bg-secondary {
+  @include button-bg($secondary);
+  @include contrasted($secondary);
+}
+.bg-success {
+  @include button-bg($success);
+  @include contrasted($success);
+}
+.bg-info {
+  @include button-bg($info);
+  @include contrasted($info);
+}
+.bg-warning {
+  @include button-bg($warning);
+  @include contrasted($warning);
+}
+.bg-error {
+  @include button-bg($error);
+  @include contrasted($error);
+}
+.bg-transparent {
+  background-color: transparent;
+}

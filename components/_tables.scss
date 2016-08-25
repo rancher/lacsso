@@ -1,0 +1,25 @@
+table {
+  thead {
+    background-color: $mid-grey;
+
+    tr {
+      th {
+        padding: 10px;
+        color: white;
+        font-weight: normal;
+        text-align: left;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: $light-grey;
+      }
+      td {
+        padding: 10px;
+      }
+    }
+  }
+}

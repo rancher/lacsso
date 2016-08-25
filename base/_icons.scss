@@ -1,0 +1,127 @@
+// @import "variables";
+
+/// Icons
+$icon-ccw: "\e900";
+$icon-check: "\e901";
+$icon-chevron-down: "\e902";
+$icon-chevron-left: "\e903";
+$icon-chevron-right: "\e904";
+$icon-circle-with-cross: "\e905";
+$icon-circular-graph: "\e906";
+$icon-code: "\e907";
+$icon-cog: "\e908";
+$icon-cycle: "\e909";
+$icon-help-with-circle: "\e90a";
+$icon-info-with-circle: "\e90b";
+$icon-select-arrows: "\e90c";
+$icon-triangle-down: "\e90d";
+$icon-triangle-down2: "\e90e";
+$icon-triangle-up: "\e90f";
+$icon-triangle-up2: "\e910";
+$icon-user: "\e911";
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ccw {
+  &:before {
+    content: $icon-ccw;
+  }
+}
+.icon-check {
+  &:before {
+    content: $icon-check;
+  }
+}
+.icon-chevron-down {
+  &:before {
+    content: $icon-chevron-down;
+  }
+}
+.icon-chevron-left {
+  &:before {
+    content: $icon-chevron-left;
+  }
+}
+.icon-chevron-right {
+  &:before {
+    content: $icon-chevron-right;
+  }
+}
+.icon-circle-with-cross {
+  &:before {
+    content: $icon-circle-with-cross;
+  }
+}
+.icon-circular-graph {
+  &:before {
+    content: $icon-circular-graph;
+  }
+}
+.icon-code {
+  &:before {
+    content: $icon-code;
+  }
+}
+.icon-cog {
+  &:before {
+    content: $icon-cog;
+  }
+}
+.icon-cycle {
+  &:before {
+    content: $icon-cycle;
+  }
+}
+.icon-help-with-circle {
+  &:before {
+    content: $icon-help-with-circle;
+  }
+}
+.icon-info-with-circle {
+  &:before {
+    content: $icon-info-with-circle;
+  }
+}
+.icon-select-arrows {
+  &:before {
+    content: $icon-select-arrows;
+  }
+}
+.icon-triangle-down {
+  &:before {
+    content: $icon-triangle-down;
+  }
+}
+.icon-triangle-down2 {
+  &:before {
+    content: $icon-triangle-down2;
+  }
+}
+.icon-triangle-up {
+  &:before {
+    content: $icon-triangle-up;
+  }
+}
+.icon-triangle-up2 {
+  &:before {
+    content: $icon-triangle-up2;
+  }
+}
+.icon-user {
+  &:before {
+    content: $icon-user;
+  }
+}

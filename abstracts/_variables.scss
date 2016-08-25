@@ -1,0 +1,66 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Regular font family
+/// @type List
+$text-font-stack: 'Prompt', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+
+/// Code (monospace) font family
+/// @type List
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+
+/// Theme colors
+$primary: #0075A8;
+$secondary: #34495E;
+
+///State colors
+$success: #A5C63B;
+$warning: #E67E22;
+$error: #F15354;
+$info: #78C9CF;
+
+//Contrast colors
+$contrasted-dark-default: #3d3d3d;
+$contrasted-light-default: white;
+
+
+/// Copy text color
+/// @type Color
+$text-color: #454545 !default;
+
+/// Main brand color
+/// @type Color
+$brand-color: $primary !default;
+
+/// Light grey
+/// @type Color
+$light-grey: #f2f2f2 !default;
+
+/// Medium grey
+/// @type Color
+$mid-grey: #9e9e9e !default;
+
+/// Dark grey
+/// @type Color
+$dark-grey: #3d3d3d !default;
+
+/// Container's maximum width
+/// @type Length
+$max-width: 1100px !default;
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  'extra-small': 320px,
+  'small': 640px,
+  'medium': 768px,
+  'large': 1024px,
+) !default;
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '/assets/' !default;
