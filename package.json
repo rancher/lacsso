@@ -6,10 +6,18 @@
     "type": "git",
     "url": "git+https://github.com/rancher/lacsso.git"
   },
-  "author": "Rancher Labs",
-  "license": "ISC",
+  "scripts": {
+    "build": "gulp sass",
+    "dev": "gulp sass:watch"
+  },
+  "author": "Rancher Labs, Inc.",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/rancher/lacsso/issues"
   },
-  "homepage": "https://github.com/rancher/lacsso#readme"
+  "homepage": "https://github.com/rancher/lacsso#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  }
 }
