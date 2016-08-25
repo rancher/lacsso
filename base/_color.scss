@@ -33,8 +33,8 @@
 }
 
 .bg-default {
-  background-color: $light-grey;
-  color: $dark-grey;
+  @include bg-color($light-grey);
+  @include contrasted($light-grey);
 }
 
 .bg-disabled {
@@ -43,27 +43,27 @@
 }
 
 .bg-primary {
-  @include button-bg($primary);
+  @include bg-color($primary);
   @include contrasted($primary);
 }
 .bg-secondary {
-  @include button-bg($secondary);
+  @include bg-color($secondary);
   @include contrasted($secondary);
 }
 .bg-success {
-  @include button-bg($success);
+  @include bg-color($success);
   @include contrasted($success);
 }
 .bg-info {
-  @include button-bg($info);
+  @include bg-color($info);
   @include contrasted($info);
 }
 .bg-warning {
-  @include button-bg($warning);
+  @include bg-color($warning);
   @include contrasted($warning);
 }
 .bg-error {
-  @include button-bg($error);
+  @include bg-color($error);
   @include contrasted($error);
 }
 .bg-transparent {

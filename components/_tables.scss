@@ -1,24 +1,59 @@
 table {
+  tr {
+    th {
+      padding: 10px;
+      color: white;
+      font-weight: normal;
+      text-align: left;
+    }
+    td {
+      padding: 10px;
+    }
+  }
   thead {
     background-color: $mid-grey;
-
+  }
+  tbody {
     tr {
-      th {
-        padding: 10px;
-        color: white;
-        font-weight: normal;
-        text-align: left;
+      border-bottom: solid thin $light-grey;
+      td {
+        border: solid thin $light-grey;
+      }
+    }
+    &.striped {
+      tr {
+        border: none;
+        td {
+          border: none;
+        }
+        &:nth-child(even) {
+          background-color: $light-grey;
+        }
       }
     }
   }
-
   tbody {
-    tr {
-      &:nth-child(even) {
-        background-color: $light-grey;
+    &.striped {
+      tr {
+        &:hover {
+          background-color: rgba($info, .15);
+        }
       }
-      td {
-        padding: 10px;
+    }
+  }
+  &.solid {
+    background: $light-grey;
+    tbody {
+      tr {
+        &:hover {
+          background-color: rgba($info, .3);
+        }
+        td {
+          border: solid 2px white;
+          &:hover {
+            background-color: $info;
+          }
+        }
       }
     }
   }

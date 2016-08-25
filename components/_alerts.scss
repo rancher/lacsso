@@ -1,4 +1,8 @@
 .alert {
   border: solid 2px $light-grey;
-  padding: 20px;
+  padding: 40px;
+
+  .alert-header {
+    margin: 0;
+  }
 }

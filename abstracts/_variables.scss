@@ -4,7 +4,7 @@
 
 /// Regular font family
 /// @type List
-$text-font-stack: 'Prompt', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$text-font-stack: 'Lato', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
 /// Code (monospace) font family
 /// @type List
@@ -15,7 +15,7 @@ $primary: #0075A8;
 $secondary: #34495E;
 
 ///State colors
-$success: #A5C63B;
+$success: #27AE5F;
 $warning: #E67E22;
 $error: #F15354;
 $info: #78C9CF;
@@ -35,11 +35,11 @@ $brand-color: $primary !default;
 
 /// Light grey
 /// @type Color
-$light-grey: #f2f2f2 !default;
+$light-grey: #ecf0f1 !default;
 
 /// Medium grey
 /// @type Color
-$mid-grey: #9e9e9e !default;
+$mid-grey: #99a3a8 !default;
 
 /// Dark grey
 /// @type Color

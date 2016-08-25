@@ -32,6 +32,14 @@
   }
 }
 
+///Place holder
+@mixin placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+
 ///Sets the specified background color and calculates a dark or light contrasted text color.
 @mixin contrasted($background-color, $dark: $contrasted-dark-default, $light: $contrasted-light-default, $threshold: null) {
   @if $threshold {
@@ -43,13 +51,21 @@
 }
 
 ///Sets base color and darkens bg on hover
-@mixin button-bg($bg) {
+@mixin bg-color($bg) {
   background: $bg;
-  &.btn:hover {
+  &.btn:hover, a:hover {
     background:darken($bg,10%);
     transition: all 0.3s ease;
   }
-  &.btn:active {
+  &.btn:active, a:focus {
     background:darken($bg,25%);
   } 
+}
+
+///Sets base color and darkens bg on hover
+@mixin bg-lighten($bg) {
+  background: $bg;
+  * {
+    background:lighten($bg,20%);
+  }
 }

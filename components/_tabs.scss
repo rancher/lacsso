@@ -1,0 +1,33 @@
+.tabs {
+  position: relative;
+
+  ul {
+    &.tab-header {
+      padding: 0;
+      margin: 0;
+
+      li {
+        list-style-type: none;
+        display: inline-block;
+
+        a {
+          display: block;
+          padding: 15px;
+          margin-right: 5px;
+          text-decoration: none;
+          @extend .bg-default;
+
+          &.active {
+            @include bg-color($primary);
+            @include contrasted($primary);
+          }
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    padding: 40px;
+    border: solid 2px $light-grey;
+  }
+}

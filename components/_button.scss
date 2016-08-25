@@ -14,11 +14,11 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    border: 1px solid transparent;
+    border: 0 solid transparent;
     padding: 10px 20px;
     border-radius: .25rem;
     letter-spacing: .5px;
-    border-radius: 1px;
+    border-radius: 2px;
 
     &.bg-transparent {
         color: $primary;
@@ -26,5 +26,35 @@
 
     &:hover {
         text-decoration: none;
+    }
+}
+
+.btn-group {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+
+    .btn {
+        position: relative;
+        display: inline-block;
+        border-radius: 0;
+        margin-left: -1px;
+
+
+        &:first-child {
+            border-radius: 3px 0 0 3px;
+            margin-left: 0;
+        }
+
+        &:last-child {
+            border-radius: 0 3px 3px 0;
+        }
+    }
+
+    &.action-menu {
+        .btn {
+            padding: 10px 15px;
+            font-size: .75em;
+        }
     }
 }
