@@ -29,6 +29,7 @@
     }
 }
 
+//button group
 .btn-group {
     position: relative;
     display: inline-block;
@@ -57,4 +58,24 @@
             font-size: .75em;
         }
     }
+}
+
+//dropdown button
+.dropdown-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+  border: solid thin $light-grey;
+  max-width: 250px;
+  display: block;
+
+  &.hidden {
+    display: none;
+  }
+  li {
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
 }

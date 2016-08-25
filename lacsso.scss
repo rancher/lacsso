@@ -33,10 +33,15 @@
 // 5. Components
 @import
   'components/alerts',
+  'components/modals',
+  'components/nav',
   'components/button',
   'components/banners',
+  'components/badges',
   'components/dropdowns',
   'components/tables',
+  'components/tabs',
+  'components/tooltip',
   'components/forms';
 
 // 6. Page-specific styles
@@ -47,4 +52,3 @@
 @import
   'themes/default',
   'themes/demo';
-
