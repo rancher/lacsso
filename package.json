@@ -7,8 +7,8 @@
     "url": "git+https://github.com/rancher/lacsso.git"
   },
   "scripts": {
-    "build": "gulp sass",
-    "dev": "gulp sass:watch"
+    "start": "gulp sass:watch",
+    "build": "gulp sass"
   },
   "author": "Rancher Labs, Inc.",
   "license": "Apache-2.0",
