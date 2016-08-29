@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "gulp sass:watch",
+    "tag": "gulp tag",
     "build": "gulp sass"
   },
   "author": "Rancher Labs, Inc.",
