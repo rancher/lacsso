@@ -1,0 +1,22 @@
+{
+  "name": "lacsso",
+  "description": "A small css library with basic components",
+  "main": "",
+  "authors": [
+    "Rancher Labs",
+    "Inc."
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "rancher",
+    "css"
+  ],
+  "homepage": "https://github.com/rancher/lacsso",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

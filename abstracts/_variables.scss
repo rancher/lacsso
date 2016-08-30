@@ -4,25 +4,25 @@
 
 /// Regular font family
 /// @type List
-$text-font-stack: 'Lato', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$text-font-stack: 'Prompt', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
 /// Code (monospace) font family
 /// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+$code-font-stack: Consolas, "Andale Mono", "Lucida Console", Monaco, "Courier New", Courier,  monospace !default;
 
 /// Theme colors
-$primary: #0075A8;
-$secondary: #34495E;
+$primary: #0075A8 !default;
+$secondary: #34495E !default;
 
 ///State colors
-$success: #27AE5F;
-$warning: #E67E22;
-$error: #F15354;
-$info: #78C9CF;
+$success: #27AE5F !default;
+$warning: #E67E22 !default;
+$error: #F15354 !default;
+$info: #78C9CF !default;
 
 //Contrast colors
-$contrasted-dark-default: #3d3d3d;
-$contrasted-light-default: white;
+$contrasted-dark-default: #3d3d3d !default;
+$contrasted-light-default: white !default;
 
 
 /// Copy text color
@@ -56,7 +56,7 @@ $breakpoints: (
   'extra-small': 320px,
   'small': 640px,
   'medium': 768px,
-  'large': 1024px,
+  'large': 960px, // =1920/2, the-one-true-resolution
 ) !default;
 
 /// Relative or absolute URL where all assets are served from
@@ -64,3 +64,4 @@ $breakpoints: (
 /// @example scss - When using a CDN
 ///   $base-url: 'http://cdn.example.com/assets/';
 $base-url: '/assets/' !default;
+$base-url-fonts: #{$base-url}/fonts !default;
