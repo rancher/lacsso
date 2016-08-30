@@ -29,10 +29,6 @@ $contrasted-light-default: white !default;
 /// @type Color
 $text-color: #454545 !default;
 
-/// Main brand color
-/// @type Color
-$brand-color: $primary !default;
-
 /// Light grey
 /// @type Color
 $light-grey: #ecf0f1 !default;
@@ -44,6 +40,11 @@ $mid-grey: #99a3a8 !default;
 /// Dark grey
 /// @type Color
 $dark-grey: #3d3d3d !default;
+
+/// Main brand color
+/// @type Color
+$brand-color: $primary !default;
+$brand-accent: $light-grey !default;
 
 /// Container's maximum width
 /// @type Length
