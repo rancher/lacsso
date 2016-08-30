@@ -24,6 +24,10 @@ form {
     position: relative;
 }
 
+label {
+    color: $mid-grey;
+}
+
 input[type='text'],
 textarea {
     display: block;
