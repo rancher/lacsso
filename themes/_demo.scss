@@ -34,3 +34,8 @@
   background-color: rgba($light-grey, .75);
   padding: 30px;
 }
+
+form {
+    border: solid 2px $light-grey;
+    padding: 4.5%;
+  }
