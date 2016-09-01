@@ -32,7 +32,7 @@ $GUTTER: 1.5%;
 /* COLUMNS */
 @for $cols from 2 through $COLUMNS {
   $span: $cols;
-  $suffix: nil;
+  $suffix:null;
 
   @if ( $cols != $COLUMNS ) {
     $suffix: -of-#{$cols}
