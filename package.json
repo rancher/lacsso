@@ -1,15 +1,25 @@
 {
   "name": "lacsso",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A small css library with basic components",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rancher/lacsso.git"
   },
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
   "scripts": {
-    "start": "gulp sass:watch",
-    "tag": "gulp tag",
-    "build": "gulp sass"
+    "build": "ember build",
+    "start": "ember server",
+    "test": "ember try:each",
+    "gulp-start": "gulp sass:watch",
+    "gulp-tag": "gulp tag",
+    "gulp-build": "gulp sass"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
   },
   "author": "Rancher Labs, Inc.",
   "license": "Apache-2.0",
@@ -18,11 +28,40 @@
   },
   "homepage": "https://github.com/rancher/lacsso#readme",
   "devDependencies": {
+    "broccoli-asset-rev": "^2.4.2",
+    "ember-ajax": "^2.0.1",
+    "ember-cli": "2.6.3",
+    "ember-cli-app-version": "^1.0.0",
+    "ember-cli-dependency-checker": "^1.2.0",
+    "ember-cli-htmlbars": "^1.0.3",
+    "ember-cli-htmlbars-inline-precompile": "^0.3.1",
+    "ember-cli-inject-live-reload": "^1.4.0",
+    "ember-cli-jshint": "^1.0.0",
+    "ember-cli-qunit": "^1.4.0",
+    "ember-cli-release": "^0.2.9",
+    "ember-cli-sri": "^2.1.0",
+    "ember-cli-uglify": "^1.2.0",
+    "ember-data": "^2.6.0",
+    "ember-disable-prototype-extensions": "^1.1.0",
+    "ember-export-application-global": "^1.0.5",
+    "ember-load-initializers": "^0.5.1",
+    "ember-resolver": "^2.0.3",
+    "loader.js": "^4.0.1",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.4.0",
     "gulp-filter": "^4.0.0",
     "gulp-git": "^1.11.2",
     "gulp-sass": "^2.3.2",
     "gulp-tag-version": "^1.3.0"
+  },
+  "keywords": [
+    "ember-addon"
+  ],
+  "dependencies": {
+    "ember-cli-sass": "5.5.1",
+    "ember-cli-babel": "^5.1.6"
+  },
+  "ember-addon": {
+    "configPath": "tests/dummy/config"
   }
 }
