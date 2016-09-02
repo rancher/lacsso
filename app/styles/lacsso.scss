@@ -11,6 +11,9 @@
 // 2. Vendors
 @import
   'vendor/normalize';
+@import
+  'ember-modal-dialog/ember-modal-structure',
+  'ember-modal-dialog/ember-modal-appearance';
 
 // 3. Base stuff
 @import
@@ -51,3 +54,9 @@
 @import
   'themes/default',
   'themes/demo';
+
+@import
+  'bower_components/rancher-icons/style.scss',
+  'bower_components/rancher-icons/variables.scss',
+  'bower_components/rancher-icons/features.scss';
+

@@ -19,3 +19,4 @@ build
 npm-debug.log
 testem.log
 .tern-port
+.DS_Store
