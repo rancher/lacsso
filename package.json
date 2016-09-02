@@ -1,6 +1,6 @@
 {
   "name": "lacsso",
-  "version": "0.0.5",
+  "version": "0.0.3",
   "description": "A small css library with basic components",
   "repository": {
     "type": "git",
@@ -13,10 +13,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember try:each",
-    "gulp-start": "gulp sass:watch",
-    "gulp-tag": "gulp tag",
-    "gulp-build": "gulp sass"
+    "test": "ember try:each"
   },
   "engines": {
     "node": ">= 0.10.0"
