@@ -1,13 +1,10 @@
 import Ember from 'ember';
 import layout from '../templates/components/generic-modal';
+import ModalBase from './modal-base';
 
-export default Ember.Component.extend({
+export default ModalBase.extend({
   layout,
-  modalService: Ember.inject.service('modal'),
-  modalOpts: Ember.computed.alias('modalService.modalOpts'),
-  actions: {
-    close() {
-      this.get('modalService').toggleModal();
-    }
+  willRender() {
+    this.set('modalService.modalOpts.modalClasses', ['span-4', 'offset-4']);
   }
 });

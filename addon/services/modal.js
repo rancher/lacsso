@@ -4,8 +4,9 @@ const DEFAULTOPTS = {
   modalCancelButton: 'Cancel',
   modalClasses: ['span-6', 'offset-3'],
   modalContent: null,
-  modalGoButton: 'Save',
-  modalHeader: null,
+  modalGoButton: 'Okay',
+  modalHeader: 'Default: Alert of Modal header',
+  modalGoAction: null,
 };
 
 export default Ember.Service.extend({
