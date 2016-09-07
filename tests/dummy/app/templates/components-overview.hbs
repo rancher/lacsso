@@ -1,6 +1,2 @@
-{{#modal-dialog close="toggleModal"
-                targetAttachment="center"
-                container-class="modal col span-6 offset-3"
-                overlay-class="overlay"}}
-  Oh hai there!
-{{/modal-dialog}}
+<button class="btn bg-transparent" {{action 'openModal' 'generic-modal'}}>Show Generic Modal</button>
+{{modal-root}}

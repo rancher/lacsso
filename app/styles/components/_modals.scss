@@ -1,3 +1,11 @@
+.overlay {
+  background-color: rgba($light-grey, .75);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .modal {
   background-color: white;
   box-shadow: 0 0 15px rgba($mid-grey, .35);
@@ -30,5 +38,9 @@
     margin: 30px;
     padding-top: 15px;
     border-top: solid thin $light-grey;
+  }
+
+  &.generic {
+    padding-top: 20px;
   }
 }
