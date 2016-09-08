@@ -1,6 +1,6 @@
 {
   "name": "lacsso",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "A small css library with basic components",
   "repository": {
     "type": "git",
@@ -41,6 +41,11 @@
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
+    "gulp": "^3.9.1",
+    "gulp-bump": "^2.4.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-git": "^1.11.3",
+    "gulp-github-release": "^2.2.0",
     "loader.js": "^4.0.1"
   },
   "keywords": [
