@@ -5,10 +5,10 @@
       <button href="/" class="logo btn bg-transparent col span-2">HELLO LOGO</button>
 
       <ul class="col span-8">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Clients</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <ul>
+          <li>{{#link-to 'index'}}Style Guide{{/link-to}}</li>
+          <li>{{#link-to 'components-overview'}}Component Guide{{/link-to}}</li>
+        </ul>
       </ul>
 
       <div class="dropdown col span-2">
@@ -449,7 +449,7 @@
   </div>
 
   <h2>Modal Alerts</h2>
-  <div class="overlay section row">
+  <div class="overlay-demo section row">
     <div class="modal col span-6 offset-3">
       <div class="text-default modal-header">
       <h4 class="modal-title">Default: Alert of Modal header</h4>
