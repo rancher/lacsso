@@ -1,6 +1,6 @@
 {
   "name": "lacsso",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A small css library with basic components",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
     "gulp-bump": "^2.4.0",
     "gulp-filter": "^4.0.0",
     "gulp-git": "^1.11.3",
-    "gulp-github-release": "^2.2.0",
+    "gulp-github-release": "^1.2.0",
     "loader.js": "^4.0.1"
   },
   "keywords": [
