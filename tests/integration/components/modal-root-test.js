@@ -11,14 +11,6 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{modal-root}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$('.overlay').length, 1);
 
-  // Template block usage:
-  this.render(hbs`
-    {{#modal-root}}
-      template block text
-    {{/modal-root}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });

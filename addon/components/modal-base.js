@@ -7,5 +7,5 @@ export default Ember.Component.extend({
     close() {
       this.get('modalService').toggleModal();
     },
-  }
+  },
 });

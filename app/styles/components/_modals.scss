@@ -5,10 +5,26 @@
   position: absolute;
   top: 0;
   left: 0;
+  &.modal-closed {
+    z-index: -10;
+    opacity: 0;
+  }
+  &.modal-open {
+    z-index: 10;
+    opacity:1;
+    transition: opacity .25s ease-in-out;
+    .modal {
+      max-height: 1000px;
+      transition: max-height .25s ease-in-out;
+    }
+  }
 }
 .modal {
   background-color: white;
   box-shadow: 0 0 15px rgba($mid-grey, .35);
+  z-index: 15;
+  max-height:0;
+  overflow: hidden;
 
   .modal-header {
     margin: 0;
