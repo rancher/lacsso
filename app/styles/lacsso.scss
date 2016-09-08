@@ -1,0 +1,59 @@
+@charset 'UTF-8';
+
+// 1. Configuration and helpers
+@import
+  'abstracts/variables',
+  'abstracts/functions',
+  'abstracts/mixins',
+  'abstracts/decimal';
+
+
+// 2. Vendors
+@import
+  'vendor/normalize';
+
+// 3. Base stuff
+@import
+  'base/base',
+  'base/color',
+  'base/typography',
+  'base/helpers';
+
+// 4. Layout-related sections
+@import
+  'layout/header',
+  'layout/footer',
+  'layout/grid',
+  'layout/large',
+  'layout/medium',
+  'layout/small',
+  'layout/extra-small';
+
+// 5. Components
+@import
+  'components/alerts',
+  'components/modals',
+  'components/nav',
+  'components/button',
+  'components/banners',
+  'components/badges',
+  'components/dropdowns',
+  'components/tables',
+  'components/tabs',
+  'components/tooltip',
+  'components/forms';
+
+// 6. Page-specific styles
+@import
+  'pages/home';
+
+// 7. Themes
+@import
+  'themes/default',
+  'themes/demo';
+
+@import
+  'bower_components/rancher-icons/style.scss',
+  'bower_components/rancher-icons/variables.scss',
+  'bower_components/rancher-icons/features.scss';
+
