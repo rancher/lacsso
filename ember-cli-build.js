@@ -22,19 +22,5 @@ module.exports = function(defaults) {
     behave. You most likely want to be modifying `./index.js` or app's build file
   */
 
-  //app.import('bower_components/rancher-icons/style.css');
-  app.import('bower_components/rancher-icons/fonts/rancher-icons.svg', {
-    destDir: 'assets/fonts'
-  });
-  app.import('bower_components/rancher-icons/fonts/rancher-icons.ttf', {
-    destDir: 'assets/fonts'
-  });
-  app.import('bower_components/rancher-icons/fonts/rancher-icons.woff', {
-    destDir: 'assets/fonts'
-  });
-  app.import('bower_components/rancher-icons/fonts/rancher-icons.woff2', {
-    destDir: 'assets/fonts'
-  });
-
   return app.toTree();
 };
