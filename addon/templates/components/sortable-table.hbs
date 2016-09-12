@@ -1,0 +1,25 @@
+<thead>
+  <tr>
+    {{#each tableHeaders as | header |}}
+      <th>
+        {{sortable-th
+            sortable=tableData
+            action="changeSort"
+            name=header.name
+            label=header.displayName
+            classNames=header.classNames
+            width=header.width}}
+      </th>
+    {{/each}}
+  </tr>
+</thead>
+<tbody>
+  {{#each arranged as |content|}}
+    <tr>
+      {{#each tableHeaders as |header|}}
+        <td data-title={{header.displayName}}>{{select-property content header.name}}</td>
+      {{/each}}
+    </tr>
+  {{/each}}
+</tbody>
+

@@ -1,4 +1,7 @@
 table {
+  &.fixed {
+    table-layout: fixed;
+  }
   tr {
     th {
       padding: 10px;
