@@ -3,21 +3,32 @@ import ThrottledResize from './throttled-resize';
 
 export default Ember.Mixin.create(ThrottledResize, {
   didInsertElement() {
-    let $offset = Ember.$(this.element).find('thead tr:nth-child(2)').offset().top;
+    let $offset = Ember.$(this.element).find('thead tr').offset().top;
 
-    this.buildFloatingHeader();
     Ember.$(window).scroll(() => {
       this.updateHeaders($offset);
     });
+
   },
-  buildFloatingHeader() {
-    Ember.$(this.element).find('thead tr th').each((idx, th) => {
-      Ember.$(th).attr('width', Ember.$(th).outerWidth());
+
+  buildTableWidths() {
+    let ths = Ember.$(this.element).find('thead tr:nth-child(2) th');
+
+    Ember.$(this.element).find('thead tr:first-child th').each((idx, th) => {
+      Ember.$(ths[idx]).attr('width', Ember.$(th).outerWidth());
     });
   },
-  onResize() {
-    this.buildFloatingHeader();
+
+  tearDownTableWidths() {
+    Ember.$(this.element).find('thead tr:nth-child(2) th').each((idx, td) => {
+      Ember.$(td).removeAttr('width');
+    });
   },
+
+  onResize() {
+    this.buildTableWidths();
+  },
+
   updateHeaders(offset) {
     let $windowScroll = Ember.$(window).scrollTop();
     let $table = Ember.$(this.element);
@@ -27,11 +38,13 @@ export default Ember.Mixin.create(ThrottledResize, {
 
     if ($windowScroll < containerBottom ) {
       if ($scrollTop >= offset) {
+        this.buildTableWidths();
         $floatingHeader.css({
           'position': 'fixed',
           'top':0
         });
       } else if ($scrollTop <= offset) {
+        this.tearDownTableWidths();
         $floatingHeader.css({
           'position': '',
           'top': '',
@@ -39,6 +52,7 @@ export default Ember.Mixin.create(ThrottledResize, {
       }
     } else {
       if ($floatingHeader.css('position') === 'fixed') {
+        this.tearDownTableWidths();
         $floatingHeader.css({
           'position': '',
           'top': '',

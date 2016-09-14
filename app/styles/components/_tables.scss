@@ -1,6 +1,11 @@
 table {
   &.fixed {
     table-layout: fixed;
+    width: 100%;
+  }
+  .fixed-header {
+    visibility: hidden;
+    padding: 0;
   }
   tr {
     th {
