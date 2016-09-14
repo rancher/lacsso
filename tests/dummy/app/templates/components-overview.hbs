@@ -4,9 +4,11 @@
     <button class="btn bg-primary" {{action 'openModal' 'generic-modal'}}>Show Generic Modal</button>
     <button class="btn bg-primary" {{action 'openModal' 'advanced-modal'}}>Show Advanced Modal</button>
   </div>
-  <div class="section row">
+  <div class="section row" style="margin-bottom: 5400px;">
     <h2>Table Component</h2>
     {{sortable-table tableData=tableModelData tableHeaders=tableHeaderList}}
+    <hr />
+    {{!-- {{sortable-table tableData=tableModelData tableHeaders=tableHeaderList}} --}}
   </div>
 
   {{modal-root}}

@@ -1,43 +1,49 @@
 import Ember from 'ember';
+import ThrottledResize from './throttled-resize';
 
-export default Ember.Mixin.create({
+export default Ember.Mixin.create(ThrottledResize, {
   didInsertElement() {
-    let $table = Ember.$(this.element);
-    let $tableHeaderClone = $table.find('thead tr').clone().addClass('fixed-header');
-    let $offset = $tableHeaderClone.offset().top;
+    let $offset = Ember.$(this.element).find('thead tr:nth-child(2)').offset().top;
 
-    //this.buildFloatingHeader($table, $tableHeaderClone);
-    //$table.find('thead').prepend($tableHeaderClone);
+    this.buildFloatingHeader();
     Ember.$(window).scroll(() => {
-      this.updateHeaders($tableHeaderClone, $offset);
+      this.updateHeaders($offset);
     });
   },
-  buildFloatingHeader(table, tableHeaderClone) {
-    let widths = [];
-    let clonedThs = tableHeaderClone.find('th');
-    table.find('thead tr th').each((idx, th) => {
-      Ember.$(clonedThs[idx]).attr('width', Ember.$(th).outerWidth());
+  buildFloatingHeader() {
+    Ember.$(this.element).find('thead tr th').each((idx, th) => {
+      Ember.$(th).attr('width', Ember.$(th).outerWidth());
     });
-    table.find('thead').append(tableHeaderClone);
   },
-  updateHeaders(tableHeader, offset) {
-    let $tableWidth = Ember.$(this.element).width();
+  onResize() {
+    this.buildFloatingHeader();
+  },
+  updateHeaders(offset) {
+    let $windowScroll = Ember.$(window).scrollTop();
+    let $table = Ember.$(this.element);
+    let $floatingHeader = $table.find('thead tr:nth-child(2)');
     let $scrollTop = Ember.$(window).scrollTop();
-    if ($scrollTop >= offset) {
-      Ember.$(this.element).find('thead tr:nth-child(2)').css({
-            "position": "absolute",
-            "top":0
-           });
-      //$(tableHeader).css('width', $tableWidth).insertBefore(Ember.$(this.element));
-      //tableHeader.css({
-            //"visibility": "visible",
-            //"width": $tableWidth
-           //});
-    } else if ($scrollTop <= offset) {
-      //tableHeader.css({
-            //"visibility": "hidden",
-            //"width": $tableWidth
-           //});
+    let containerBottom = $table.height() + $table.offset().top;
+
+    if ($windowScroll < containerBottom ) {
+      if ($scrollTop >= offset) {
+        $floatingHeader.css({
+          'position': 'fixed',
+          'top':0
+        });
+      } else if ($scrollTop <= offset) {
+        $floatingHeader.css({
+          'position': '',
+          'top': '',
+        });
+      }
+    } else {
+      if ($floatingHeader.css('position') === 'fixed') {
+        $floatingHeader.css({
+          'position': '',
+          'top': '',
+        });
+      }
     }
   }
 });
