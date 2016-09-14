@@ -1,15 +1,20 @@
 <thead>
   <tr>
+    {{#each tableHeaders as | header idx|}}
+      <th style="height:0;visibility:hidden;{{if header.width (concat 'width:' header.width ';')}}line-height:1px;padding:0;overflow:auto">
+      </th>
+    {{/each}}
+  </tr>
+  <tr>
     {{#each tableHeaders as | header |}}
-      <th>
         {{sortable-th
-            sortable=tableData
+            current=sortBy
+            descending=descending
             action="changeSort"
             name=header.name
             label=header.displayName
             classNames=header.classNames
             width=header.width}}
-      </th>
     {{/each}}
   </tr>
 </thead>

@@ -1,5 +1,14 @@
 <button class="btn bg-transparent">
   {{#if hasBlock}}{{yield}}{{else}}{{label}}{{/if}}
+  {{#if activeAscending}}
+    true
+  {{else}}
+      {{#if activeDescending}}
+    false
+  {{else}}
+    inactive
+      {{/if}}
+  {{/if}}
   <span class="icon-stack">
     <i class="icon icon-sort icon-stack-1x faded"></i>
     {{#if activeAscending}}

@@ -14,7 +14,9 @@ table {
     }
   }
   thead {
-    background-color: $mid-grey;
+    tr {
+      background-color: $mid-grey;
+    }
   }
   tbody {
     tr {

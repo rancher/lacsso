@@ -35465,7 +35465,7 @@ export default Ember.Controller.extend({
       name: 'id',
       type: 'string',
       classNames: '',
-      width: '150'
+      width: '150px'
     },
     {
       displayName: 'Type',
@@ -35478,7 +35478,7 @@ export default Ember.Controller.extend({
       type: 'date',
     },
     {
-      displayName: 'Process Instance ID',
+      displayName: 'processid',
       name: 'processInstanceId',
       type: 'string',
     },
