@@ -1,4 +1,32 @@
 <div class="container">
+  <header id="header" class="section row">
+
+    <nav class="row" role="navigation">
+      <button href="/" class="logo btn bg-transparent col span-2">HELLO LOGO</button>
+
+      <ul class="col span-8">
+        <ul>
+          <li>{{#link-to 'index'}}Style Guide{{/link-to}}</li>
+          <li>{{#link-to 'components-overview'}}Component Guide{{/link-to}}</li>
+        </ul>
+      </ul>
+
+      <div class="dropdown col span-2">
+        <button class="btn bg-primary dropdown-toggle span-12" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span class="icon icon-user"></span> User Name
+        </button>
+
+          <ul class="dropdown-menu hidden">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
   <div class="section row">
     <h2>Modals</h2>
     <button class="btn bg-primary" {{action 'openModal' 'generic-modal'}}>Show Generic Modal</button>

@@ -10,17 +10,21 @@ export default Ember.Mixin.create(ThrottledResize, {
     });
 
   },
+  willDestroyElement() {
+    this._super(...arguments);
+    Ember.$(window).unbind('scroll');
+  },
 
   buildTableWidths() {
-    let ths = Ember.$(this.element).find('thead tr:nth-child(2) th');
+    let ths = Ember.$(this.element).find('thead tr.fixed-header th');
 
-    Ember.$(this.element).find('thead tr:first-child th').each((idx, th) => {
+    Ember.$(this.element).find('thead tr.fixed-header-placeholder th').each((idx, th) => {
       Ember.$(ths[idx]).attr('width', Ember.$(th).outerWidth());
     });
   },
 
   tearDownTableWidths() {
-    Ember.$(this.element).find('thead tr:nth-child(2) th').each((idx, td) => {
+    Ember.$(this.element).find('thead tr.fixed-header th').each((idx, td) => {
       Ember.$(td).removeAttr('width');
     });
   },
@@ -32,7 +36,7 @@ export default Ember.Mixin.create(ThrottledResize, {
   updateHeaders(offset) {
     let $windowScroll = Ember.$(window).scrollTop();
     let $table = Ember.$(this.element);
-    let $floatingHeader = $table.find('thead tr:nth-child(2)');
+    let $floatingHeader = $table.find('thead tr.fixed-header');
     let $scrollTop = Ember.$(window).scrollTop();
     let containerBottom = $table.height() + $table.offset().top;
 

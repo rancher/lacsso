@@ -1,10 +1,12 @@
 <thead>
-  <tr class='fixed-header'>
+  <tr class='fixed-header-placeholder'>
     {{#each tableHeaders as | header idx|}}
       <th width={{if header.width header.width}}></th>
     {{/each}}
   </tr>
-  <tr>
+  <tr class="header-bulk-actions">
+  </tr>
+  <tr class='fixed-header'>
     {{#each tableHeaders as | header |}}
         {{sortable-th
           current=sortBy
