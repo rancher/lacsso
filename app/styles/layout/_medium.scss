@@ -1,9 +1,5 @@
 ///768
 @media only screen and (max-width: map-get($breakpoints, medium)) {
-  body {
-    background: magenta;
-  }
-
   .col { margin: 1% 0 1% 0%;}
 
   .span-12,
@@ -19,7 +15,7 @@
   .span-2,
   .span-1,
   .gutless {
-    width: 100%; 
+    width: 100%;
   }
 
 .gutless {

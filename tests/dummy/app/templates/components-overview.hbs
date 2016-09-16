@@ -34,9 +34,9 @@
   </div>
   <div class="section row" style="margin-bottom: 5400px;">
     <h2>Table Component</h2>
-    {{sortable-table tableData=tableModelData tableHeaders=tableHeaderList}}
+    {{sortable-table body=tableModelData headers=tableHeaderList bulkActions=true}}
     <hr />
-    {{sortable-table tableData=tableModelData tableHeaders=tableHeaderList}}
+    {{sortable-table body=tableModelData headers=tableHeaderList}}
   </div>
 
   {{modal-root}}

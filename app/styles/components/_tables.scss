@@ -1,7 +1,22 @@
 table {
+  position: relative;
   &.fixed {
     table-layout: fixed;
     width: 100%;
+  }
+  .fixed-header-actions {
+    display: table-row;
+    background: red;
+    width:100%;
+    position: absolute;
+    top: -2px;
+  }
+  .container-actions {
+    float: right;
+  }
+  .container-select-all {
+    margin-left: 10px;
+    width: 40px;
   }
   .fixed-header-placeholder {
     visibility: hidden;

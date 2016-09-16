@@ -1,28 +1,44 @@
 <thead>
   <tr class='fixed-header-placeholder'>
-    {{#each tableHeaders as | header idx|}}
+    {{#if bulkActions}}
+      <th width='40'></th>
+    {{/if}}
+    {{#each headers as | header idx|}}
       <th width={{if header.width header.width}}></th>
     {{/each}}
   </tr>
-  <tr class="header-bulk-actions">
-  </tr>
+  {{#if bulkActions}}
+    <div class='fixed-header-actions'>
+      <div class='container-actions'>Some action box</div>
+      <div class="container-select-all">
+        {{input type='checkbox' checked=selectAll}}
+      </div>
+    </div>
+  {{/if}}
+
   <tr class='fixed-header'>
-    {{#each tableHeaders as | header |}}
-        {{sortable-th
-          current=sortBy
-          descending=descending
-          action="changeSort"
-          name=header.name
-          label=header.displayName
-          classNames=header.classNames
-          }}
+    {{#if bulkActions}}
+      <th width='40' class="text-center"></th>
+    {{/if}}
+    {{#each headers as | header |}}
+      {{sortable-th
+        current=sortBy
+        descending=descending
+        action="changeSort"
+        name=header.name
+        label=header.displayName
+        classNames=header.classNames
+        }}
     {{/each}}
   </tr>
 </thead>
 <tbody>
   {{#each arranged as |content|}}
     <tr>
-      {{#each tableHeaders as |header|}}
+      {{#if bulkActions}}
+        <td width='40' class="text-center">{{input type="checkbox" checked=content.selected}}</td>
+      {{/if}}
+      {{#each headers as |header|}}
         <td data-title={{header.displayName}}>{{select-property content header.name}}</td>
       {{/each}}
     </tr>
