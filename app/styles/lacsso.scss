@@ -55,3 +55,33 @@
   'themes/default',
   'themes/demo';
 
+
+
+
+.icon-stack {
+  position: relative;
+  &.checkbox {
+    cursor: pointer;
+  }
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .icon-square {
+    color: transparent;
+    border: 1px solid black;
+  }
+  .icon-check {
+    left: 2px;
+    font-size: 13px;
+    top: 2px;
+    visibility: hidden;
+  }
+  &.checked {
+    .icon-check {
+      visibility: visible;
+    }
+  }
+}
+

@@ -9,9 +9,9 @@
   </tr>
   {{#if bulkActions}}
     <div class='fixed-header-actions'>
-      <div class='container-actions'>Some action box</div>
+      <div class='container-actions'></div>
       <div class="container-select-all">
-        {{input type='checkbox' checked=selectAll}}
+        {{check-box clickHappened=(action 'selectUnselectAll')}}
       </div>
     </div>
   {{/if}}
@@ -36,10 +36,12 @@
   {{#each arranged as |content|}}
     <tr>
       {{#if bulkActions}}
-        <td width='40' class="text-center">{{input type="checkbox" checked=content.selected}}</td>
+        <td width='40' class="text-center">
+          {{check-box clickHappened=(action 'selectUnselect' content) selectAll=selectAll}}
+        </td>
       {{/if}}
       {{#each headers as |header|}}
-        <td data-title={{header.displayName}}>{{select-property content header.name}}</td>
+        <td data-title={{header.displayName}} data-id={{content.id}}>{{select-property content header.name}}</td>
       {{/each}}
     </tr>
   {{/each}}
