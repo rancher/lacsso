@@ -62,7 +62,7 @@ export default Ember.Mixin.create(ThrottledResize, {
 
     $table.css({
       'margin-top': $fixedHeader.height() + $actionRow.height()
-    })
+    });
   },
 
   removePositions() {
@@ -82,7 +82,7 @@ export default Ember.Mixin.create(ThrottledResize, {
     });
     $table.css({
       'margin-top': ''
-    })
+    });
   },
 
   updateHeaders(offset) {

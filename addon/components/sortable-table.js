@@ -48,7 +48,6 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
       }
     }),
     triggerBulkActions: function(actionName) {
-      debugger;
       this.get(`availableActions.${actionName}`);
       //eachLimit(this.get(`availableActions.${actionName}`), 100, (name, cb) => {
 
