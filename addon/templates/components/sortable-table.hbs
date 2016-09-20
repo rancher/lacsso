@@ -9,7 +9,25 @@
   </tr>
   {{#if bulkActions}}
     <div class='fixed-header-actions'>
-      <div class='container-actions'></div>
+      <div class='container-actions'>
+        {{#if availableActions}}
+        {{#rl-dropdown-container class="dropdown"}}
+          {{#rl-dropdown-toggle class="btn btn-default"}}
+            Bulk Actions <span class="icon icon-chevron-down"></span>
+          {{/rl-dropdown-toggle}}
+
+          {{#rl-dropdown tagName="ul" class="dropdown-menu" closeOnChildClick="a:link"}}
+            {{#each-in availableActions as | actionName |}}
+              <li class="pl-10 pr-10 pb-5 pt-5" {{action 'triggerBulkActions' actionName}}>{{actionName}}</li>
+            {{/each-in}}
+          {{/rl-dropdown}}
+        {{/rl-dropdown-container}}
+        {{else}}
+          <button class="btn btn-default" disabled>
+            Bulk Actions <span class="icon icon-chevron-down"></span>
+          </button>
+        {{/if}}
+      </div>
       <div class="container-select-all">
         {{check-box clickHappened=(action 'selectUnselectAll')}}
       </div>

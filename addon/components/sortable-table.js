@@ -3,7 +3,7 @@ import layout from '../templates/components/sortable-table';
 import Sortable from '../mixins/sortable';
 import StickyHeader from '../mixins/sticky-table-header';
 
-const {set, get} = Ember;
+const {get} = Ember;
 
 export default Ember.Component.extend(Sortable, StickyHeader, {
   layout,
@@ -36,7 +36,6 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
       }
     },
     selectUnselectAll: Ember.observer('selectAll', function() {
-      console.log(this.get('body'));
       let selectAll = this.get('selectAll');
       if (selectAll) {
         selectAll = this.set('selectAll', false);
@@ -47,6 +46,13 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
         this.mergeAvailableActions(this.get('body'));
       }
     }),
+    triggerBulkActions: function(actionName) {
+      debugger;
+      this.get(`availableActions.${actionName}`);
+      //eachLimit(this.get(`availableActions.${actionName}`), 100, (name, cb) => {
+
+      //});
+    }
   },
   mergeAvailableActions: function(data) {
     let commonActions = {};
@@ -67,5 +73,6 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
         }
       });
     });
+    this.set('availableActions', commonActions);
   }
 });
