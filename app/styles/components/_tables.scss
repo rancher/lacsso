@@ -5,17 +5,20 @@ table {
     width: 100%;
   }
   .fixed-header-actions {
-    display: table-row;
-    background: red;
+    background: darken($mid-grey, 10%);
+    min-height: 40px;
     width:100%;
-    position: absolute;
-    top: -2px;
+    z-index: 1;
+  }
+  .fixed-header {
+    z-index: 1;
   }
   .container-actions {
     float: right;
   }
   .container-select-all {
-    margin-left: 10px;
+    margin-left: 12px;
+    padding-top: 12px;
     width: 40px;
   }
   .fixed-header-placeholder {

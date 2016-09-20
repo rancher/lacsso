@@ -59,6 +59,10 @@ export default Ember.Mixin.create(ThrottledResize, {
       'position': 'fixed',
       'top': $actionRow.height() || 0,
     });
+
+    $table.css({
+      'margin-top': $fixedHeader.height() + $actionRow.height()
+    })
   },
 
   removePositions() {
@@ -76,6 +80,9 @@ export default Ember.Mixin.create(ThrottledResize, {
       'position': '',
       'top': '',
     });
+    $table.css({
+      'margin-top': ''
+    })
   },
 
   updateHeaders(offset) {

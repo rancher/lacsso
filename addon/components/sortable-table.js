@@ -40,6 +40,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
       if (selectAll) {
         selectAll = this.set('selectAll', false);
         this.set('selectedNodes', []);
+        this.set('availableActions', null);
       } else {
         selectAll = this.set('selectAll', true);
         this.set('selectedNodes', this.get('body'));
