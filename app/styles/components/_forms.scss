@@ -28,6 +28,10 @@ label {
     color: $mid-grey;
 }
 
+input[type='checkbox'] {
+  cursor: pointer;
+}
+
 input[type='text'],
 textarea {
     display: block;

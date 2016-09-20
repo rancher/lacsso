@@ -1,0 +1,67 @@
+<thead>
+  <tr class='fixed-header-placeholder'>
+    {{#if bulkActions}}
+      <th width='40'></th>
+    {{/if}}
+    {{#each headers as | header idx|}}
+      <th width={{if header.width header.width}}></th>
+    {{/each}}
+  </tr>
+  {{#if bulkActions}}
+    <div class='fixed-header-actions'>
+      <div class='container-actions'>
+        {{#if availableActions}}
+        {{#rl-dropdown-container class="dropdown"}}
+          {{#rl-dropdown-toggle class="btn btn-default"}}
+            Bulk Actions <span class="icon icon-chevron-down"></span>
+          {{/rl-dropdown-toggle}}
+
+          {{#rl-dropdown tagName="ul" class="dropdown-menu" closeOnChildClick="a:link"}}
+            {{#each-in availableActions as | actionName |}}
+              <li class="pl-10 pr-10 pb-5 pt-5" {{action 'triggerBulkActions' actionName}}>{{actionName}}</li>
+            {{/each-in}}
+          {{/rl-dropdown}}
+        {{/rl-dropdown-container}}
+        {{else}}
+          <button class="btn btn-default" disabled>
+            Bulk Actions <span class="icon icon-chevron-down"></span>
+          </button>
+        {{/if}}
+      </div>
+      <div class="container-select-all">
+        {{check-box clickHappened=(action 'selectUnselectAll')}}
+      </div>
+    </div>
+  {{/if}}
+
+  <tr class='fixed-header'>
+    {{#if bulkActions}}
+      <th width='40' class="text-center"></th>
+    {{/if}}
+    {{#each headers as | header |}}
+      {{sortable-th
+        current=sortBy
+        descending=descending
+        action="changeSort"
+        name=header.name
+        label=header.displayName
+        classNames=header.classNames
+        }}
+    {{/each}}
+  </tr>
+</thead>
+<tbody>
+  {{#each arranged as |content|}}
+    <tr>
+      {{#if bulkActions}}
+        <td width='40' class="text-center">
+          {{check-box clickHappened=(action 'selectUnselect' content) selectAll=selectAll}}
+        </td>
+      {{/if}}
+      {{#each headers as |header|}}
+        <td data-title={{header.displayName}} data-id={{content.id}}>{{select-property content header.name}}</td>
+      {{/each}}
+    </tr>
+  {{/each}}
+</tbody>
+

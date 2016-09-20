@@ -21,20 +21,10 @@ module.exports = function(defaults) {
     This build file does *not* influence how the addon or the app using it
     behave. You most likely want to be modifying `./index.js` or app's build file
   */
-
-  //app.import('bower_components/rancher-icons/style.css');
-  app.import('bower_components/rancher-icons/fonts/rancher-icons.svg', {
-    destDir: 'assets/fonts'
-  });
-  app.import('bower_components/rancher-icons/fonts/rancher-icons.ttf', {
-    destDir: 'assets/fonts'
-  });
-  app.import('bower_components/rancher-icons/fonts/rancher-icons.woff', {
-    destDir: 'assets/fonts'
-  });
-  app.import('bower_components/rancher-icons/fonts/rancher-icons.woff2', {
-    destDir: 'assets/fonts'
-  });
+    app.import('vendor/fonts/prompt-v1-latin-700.woff',{destDir: 'assets/fonts/', overwrite: true});
+    app.import('vendor/fonts/prompt-v1-latin-700.woff2',{destDir: 'assets/fonts/', overwrite: true});
+    app.import('vendor/fonts/prompt-v1-latin-regular.woff',{destDir: 'assets/fonts/', overwrite: true});
+    app.import('vendor/fonts/prompt-v1-latin-regular.woff2',{destDir: 'assets/fonts/', overwrite: true});
 
   return app.toTree();
 };

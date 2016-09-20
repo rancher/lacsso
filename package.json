@@ -1,6 +1,6 @@
 {
   "name": "lacsso",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "A small css library with basic components",
   "repository": {
     "type": "git",
@@ -52,10 +52,12 @@
     "ember-addon"
   ],
   "dependencies": {
-    "ember-cli-sass": "5.5.1",
+    "ember-cli-babel": "^5.1.6",
     "ember-cli-htmlbars": "^1.0.3",
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
-    "ember-cli-babel": "^5.1.6"
+    "ember-cli-sass": "5.5.1",
+    "ember-rl-dropdown": "^0.8.0",
+    "ember-truth-helpers": "^1.2.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
