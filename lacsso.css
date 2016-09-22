@@ -1098,52 +1098,52 @@
   padding: 40px; }
 .lacsso.alert .alert-header {
     margin: 0; }
-.lacsso.overlay {
+.lacsso.modal-overlay {
   background-color: rgba(236, 240, 241, 0.75);
   height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0; }
-.lacsso.overlay.modal-closed {
+.lacsso.modal-overlay.modal-closed {
     z-index: -10;
     opacity: 0; }
-.lacsso.overlay.modal-open {
+.lacsso.modal-overlay.modal-open {
     z-index: 10;
     opacity: 1;
     transition: opacity .25s ease-in-out; }
-.lacsso.overlay.modal-open .modal {
+.lacsso.modal-overlay.modal-open .modal-container {
       max-height: 1000px;
       transition: max-height .25s ease-in-out; }
-.lacsso.modal {
+.lacsso.modal-container {
   background-color: white;
   box-shadow: 0 0 15px rgba(153, 163, 168, 0.35);
   z-index: 15;
   max-height: 0;
-  overflow: hidden; }
-.lacsso.modal .modal-header {
+  overflow: hidden;
+  position: relative;
+  padding: 20px 20px 0 20px; }
+.lacsso.modal-container .modal-header {
     margin: 0;
     background-color: #ecf0f1;
     padding: 15px 30px; }
-.lacsso.modal .modal-header .modal-title {
+.lacsso.modal-container .modal-header .modal-title {
       display: inline-block;
       vertical-align: middle;
       margin: 0; }
-.lacsso.modal .modal-header .close {
+.lacsso.modal-container .modal-header .close {
       display: inline-block;
       vertical-align: middle;
       float: right;
       margin-top: -5px;
       padding: 10px 0;
       color: #99a3a8; }
-.lacsso.modal .modal-content {
+.lacsso.modal-container .modal-content {
     padding: 0 30px; }
-.lacsso.modal .modal-footer {
+.lacsso.modal-container .modal-footer {
     margin: 30px;
     padding-top: 15px;
     border-top: solid thin #ecf0f1; }
-.lacsso.modal.generic {
-    padding-top: 20px; }
 .lacssonav ul {
   background-color: #ecf0f1;
   border-radius: 2px;

@@ -4,7 +4,7 @@ import layout from '../templates/components/modal-root';
 export default Ember.Component.extend({
   layout,
   tagName: 'div',
-  classNames: ['overlay'],
+  classNames: ['lacsso', 'modal-overlay'],
   classNameBindings: ['modalVisible:modal-open:modal-closed'],
   modalService: Ember.inject.service('modal'),
   modalType: Ember.computed.alias('modalService.modalType'),
