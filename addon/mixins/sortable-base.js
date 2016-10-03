@@ -14,7 +14,6 @@ export default Ember.Mixin.create({
       }
       else
       {
-        debugger;
         this.setProperties({
           descending: false,
           sortBy: name
@@ -24,7 +23,6 @@ export default Ember.Mixin.create({
 
     // Like changeSort, but without the auto-flipping
     setSort: function(name) {
-      debugger;
       this.setProperties({
         descending: false,
         sortBy: name

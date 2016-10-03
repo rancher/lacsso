@@ -4,6 +4,7 @@ export default Ember.Service.extend({
   modalType: 'generic-modal',
   modalOpts: null,
   modalVisible: false,
+  closeWithOutsideClick: Ember.computed.alias('modalOpts.closeWithOutsideClick'),
   toggleModal: function(type=null, opts=null) {
     if (opts) {
       this.set('modalOpts', opts);
