@@ -24,7 +24,7 @@
   box-shadow: 0 0 15px rgba($mid-grey, .35);
   z-index: 15;
   max-height:0;
-  overflow: hidden;
+  overflow-y: scroll;
   position: relative;
   padding: 20px 20px 0 20px;
 
