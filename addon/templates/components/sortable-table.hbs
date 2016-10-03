@@ -39,7 +39,7 @@
       <th width='40' class="text-center"></th>
     {{/if}}
     {{#each headers as | header |}}
-      {{sortable-th
+      {{sortable-thead
         current=sortBy
         descending=descending
         action="changeSort"

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/sortable-table';
-import Sortable from '../mixins/sortable';
+import Sortable from '../mixins/sortable-base';
 import StickyHeader from '../mixins/sticky-table-header';
 
 const {get} = Ember;
@@ -15,6 +15,11 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
   selectAll: false,
   availableActions: null,
   selectedNodes: [],
+  includeActions: true,
+  //init() {
+    //this._super(...arguments);
+    //debugger;
+  //},
   actions: {
     selectUnselect: function(node) {
       let selectedNodes = this.get('selectedNodes');
@@ -49,9 +54,6 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
     }),
     triggerBulkActions: function(actionName) {
       this.get(`availableActions.${actionName}`);
-      //eachLimit(this.get(`availableActions.${actionName}`), 100, (name, cb) => {
-
-      //});
     }
   },
   mergeAvailableActions: function(data) {

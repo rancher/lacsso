@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../templates/components/sortable-th';
+import layout from '../templates/components/sortable-thead';
 
 export default Ember.Component.extend({
   layout,
@@ -10,6 +10,9 @@ export default Ember.Component.extend({
   width: null,
   label: null,
   ariaRole: ['columnheader'],
+
+  current: null,
+  descending: null,
 
   activeAscending: Ember.computed('name','current','descending', function() {
     return !this.get('descending') && this.get('current') === this.get('name');
