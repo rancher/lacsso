@@ -420,7 +420,7 @@
     transition: all 0.3s ease; }
 .lacsso.bg-default.btn:active, .lacsso.btn.badge:active, .lacsso.tabs ul.tab-header li a.btn:active, .lacsso.btn.tooltip:active, .lacsso.bg-default a:focus, .lacsso.badge a:focus, .lacsso.tabs ul.tab-header li a a:focus, .lacsso.tooltip a:focus {
     background: #a3b6bb; }
-.lacsso.bg-disabled, .lacssoinput[type='text'].disabled, .lacssotextarea.disabled {
+.lacsso.bg-disabled, .lacssoinput[type='text'].disabled, .lacssoinput[type='password'].disabled, .lacssoinput[type='number'].disabled, .lacssotextarea.disabled {
   background-color: #99a3a8;
   color: #3d3d3d; }
 .lacsso.bg-primary {
@@ -1113,14 +1113,13 @@
     opacity: 1;
     transition: opacity .25s ease-in-out; }
 .lacsso.modal-overlay.modal-open .modal-container {
-      max-height: 1000px;
+      max-height: 100%;
       transition: max-height .25s ease-in-out; }
 .lacsso.modal-container {
   background-color: white;
   box-shadow: 0 0 15px rgba(153, 163, 168, 0.35);
   z-index: 15;
   max-height: 0;
-  overflow-y: scroll;
   position: relative;
   padding: 20px 20px 0 20px; }
 .lacsso.modal-container .modal-header {
@@ -1364,7 +1363,7 @@
     border-width: 10px; }
 .lacsso.tooltip.bg-default:after, .lacsso.tabs ul.tab-header li a.tooltip:after, .lacsso.tooltip:after {
     border-top-color: #ecf0f1; }
-.lacsso.tooltip.bg-disabled:after, .lacssoinput.tooltip[type='text'].disabled:after, .lacssotextarea.tooltip.disabled:after {
+.lacsso.tooltip.bg-disabled:after, .lacssoinput.tooltip[type='text'].disabled:after, .lacssoinput.tooltip[type='password'].disabled:after, .lacssoinput.tooltip[type='number'].disabled:after, .lacssotextarea.tooltip.disabled:after {
     border-top-color: #99a3a8; }
 .lacsso.tooltip.bg-primary:after {
     border-top-color: #0075A8; }
@@ -1396,7 +1395,7 @@
   color: #99a3a8; }
 .lacssoinput[type='checkbox'] {
   cursor: pointer; }
-.lacssoinput[type='text'], .lacssotextarea {
+.lacssoinput[type='text'], .lacssoinput[type='password'], .lacssoinput[type='number'], .lacssotextarea {
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -1408,79 +1407,79 @@
   padding: 15px 0 15px 10px;
   font-size: 15px;
   transition: all ease-in-out .3s; }
-.lacssoinput[type='text'].placeholder, .lacssotextarea.placeholder {
+.lacssoinput[type='text'].placeholder, .lacssoinput[type='password'].placeholder, .lacssoinput[type='number'].placeholder, .lacssotextarea.placeholder {
     color: #99a3a8; }
-.lacssoinput[type='text']:-moz-placeholder, .lacssotextarea:-moz-placeholder {
+.lacssoinput[type='text']:-moz-placeholder, .lacssoinput[type='password']:-moz-placeholder, .lacssoinput[type='number']:-moz-placeholder, .lacssotextarea:-moz-placeholder {
     color: #99a3a8; }
-.lacssoinput[type='text']::-moz-placeholder, .lacssotextarea::-moz-placeholder {
+.lacssoinput[type='text']::-moz-placeholder, .lacssoinput[type='password']::-moz-placeholder, .lacssoinput[type='number']::-moz-placeholder, .lacssotextarea::-moz-placeholder {
     color: #99a3a8; }
-.lacssoinput[type='text']::-webkit-input-placeholder, .lacssotextarea::-webkit-input-placeholder {
+.lacssoinput[type='text']::-webkit-input-placeholder, .lacssoinput[type='password']::-webkit-input-placeholder, .lacssoinput[type='number']::-webkit-input-placeholder, .lacssotextarea::-webkit-input-placeholder {
     color: #99a3a8; }
-.lacssoinput[type='text'].error, .lacssotextarea.error {
+.lacssoinput[type='text'].error, .lacssoinput[type='password'].error, .lacssoinput[type='number'].error, .lacssotextarea.error {
     border-color: #F15354;
     background: rgba(241, 83, 84, 0.05); }
-.lacssoinput[type='text'].error.placeholder, .lacssotextarea.error.placeholder {
+.lacssoinput[type='text'].error.placeholder, .lacssoinput[type='password'].error.placeholder, .lacssoinput[type='number'].error.placeholder, .lacssotextarea.error.placeholder {
       color: #F15354; }
-.lacssoinput[type='text'].error:-moz-placeholder, .lacssotextarea.error:-moz-placeholder {
+.lacssoinput[type='text'].error:-moz-placeholder, .lacssoinput[type='password'].error:-moz-placeholder, .lacssoinput[type='number'].error:-moz-placeholder, .lacssotextarea.error:-moz-placeholder {
       color: #F15354; }
-.lacssoinput[type='text'].error::-moz-placeholder, .lacssotextarea.error::-moz-placeholder {
+.lacssoinput[type='text'].error::-moz-placeholder, .lacssoinput[type='password'].error::-moz-placeholder, .lacssoinput[type='number'].error::-moz-placeholder, .lacssotextarea.error::-moz-placeholder {
       color: #F15354; }
-.lacssoinput[type='text'].error::-webkit-input-placeholder, .lacssotextarea.error::-webkit-input-placeholder {
+.lacssoinput[type='text'].error::-webkit-input-placeholder, .lacssoinput[type='password'].error::-webkit-input-placeholder, .lacssoinput[type='number'].error::-webkit-input-placeholder, .lacssotextarea.error::-webkit-input-placeholder {
       color: #F15354; }
-.lacssoinput[type='text'].success, .lacssotextarea.success {
+.lacssoinput[type='text'].success, .lacssoinput[type='password'].success, .lacssoinput[type='number'].success, .lacssotextarea.success {
     border-color: #27AE5F;
     background: rgba(39, 174, 95, 0.05); }
-.lacssoinput[type='text'].success.placeholder, .lacssotextarea.success.placeholder {
+.lacssoinput[type='text'].success.placeholder, .lacssoinput[type='password'].success.placeholder, .lacssoinput[type='number'].success.placeholder, .lacssotextarea.success.placeholder {
       color: #27AE5F; }
-.lacssoinput[type='text'].success:-moz-placeholder, .lacssotextarea.success:-moz-placeholder {
+.lacssoinput[type='text'].success:-moz-placeholder, .lacssoinput[type='password'].success:-moz-placeholder, .lacssoinput[type='number'].success:-moz-placeholder, .lacssotextarea.success:-moz-placeholder {
       color: #27AE5F; }
-.lacssoinput[type='text'].success::-moz-placeholder, .lacssotextarea.success::-moz-placeholder {
+.lacssoinput[type='text'].success::-moz-placeholder, .lacssoinput[type='password'].success::-moz-placeholder, .lacssoinput[type='number'].success::-moz-placeholder, .lacssotextarea.success::-moz-placeholder {
       color: #27AE5F; }
-.lacssoinput[type='text'].success::-webkit-input-placeholder, .lacssotextarea.success::-webkit-input-placeholder {
+.lacssoinput[type='text'].success::-webkit-input-placeholder, .lacssoinput[type='password'].success::-webkit-input-placeholder, .lacssoinput[type='number'].success::-webkit-input-placeholder, .lacssotextarea.success::-webkit-input-placeholder {
       color: #27AE5F; }
-.lacssoinput[type='text'].warning, .lacssotextarea.warning {
+.lacssoinput[type='text'].warning, .lacssoinput[type='password'].warning, .lacssoinput[type='number'].warning, .lacssotextarea.warning {
     border-color: #E67E22;
     background: rgba(230, 126, 34, 0.05); }
-.lacssoinput[type='text'].warning.placeholder, .lacssotextarea.warning.placeholder {
+.lacssoinput[type='text'].warning.placeholder, .lacssoinput[type='password'].warning.placeholder, .lacssoinput[type='number'].warning.placeholder, .lacssotextarea.warning.placeholder {
       color: #E67E22; }
-.lacssoinput[type='text'].warning:-moz-placeholder, .lacssotextarea.warning:-moz-placeholder {
+.lacssoinput[type='text'].warning:-moz-placeholder, .lacssoinput[type='password'].warning:-moz-placeholder, .lacssoinput[type='number'].warning:-moz-placeholder, .lacssotextarea.warning:-moz-placeholder {
       color: #E67E22; }
-.lacssoinput[type='text'].warning::-moz-placeholder, .lacssotextarea.warning::-moz-placeholder {
+.lacssoinput[type='text'].warning::-moz-placeholder, .lacssoinput[type='password'].warning::-moz-placeholder, .lacssoinput[type='number'].warning::-moz-placeholder, .lacssotextarea.warning::-moz-placeholder {
       color: #E67E22; }
-.lacssoinput[type='text'].warning::-webkit-input-placeholder, .lacssotextarea.warning::-webkit-input-placeholder {
+.lacssoinput[type='text'].warning::-webkit-input-placeholder, .lacssoinput[type='password'].warning::-webkit-input-placeholder, .lacssoinput[type='number'].warning::-webkit-input-placeholder, .lacssotextarea.warning::-webkit-input-placeholder {
       color: #E67E22; }
-.lacssoinput[type='text']:hover, .lacssotextarea:hover {
+.lacssoinput[type='text']:hover, .lacssoinput[type='password']:hover, .lacssoinput[type='number']:hover, .lacssotextarea:hover {
     border-color: #99a3a8;
     background: rgba(153, 163, 168, 0.2); }
-.lacssoinput[type='text']:hover.placeholder, .lacssotextarea:hover.placeholder {
+.lacssoinput[type='text']:hover.placeholder, .lacssoinput[type='password']:hover.placeholder, .lacssoinput[type='number']:hover.placeholder, .lacssotextarea:hover.placeholder {
       color: #99a3a8; }
-.lacssoinput[type='text']:hover:-moz-placeholder, .lacssotextarea:hover:-moz-placeholder {
+.lacssoinput[type='text']:hover:-moz-placeholder, .lacssoinput[type='password']:hover:-moz-placeholder, .lacssoinput[type='number']:hover:-moz-placeholder, .lacssotextarea:hover:-moz-placeholder {
       color: #99a3a8; }
-.lacssoinput[type='text']:hover::-moz-placeholder, .lacssotextarea:hover::-moz-placeholder {
+.lacssoinput[type='text']:hover::-moz-placeholder, .lacssoinput[type='password']:hover::-moz-placeholder, .lacssoinput[type='number']:hover::-moz-placeholder, .lacssotextarea:hover::-moz-placeholder {
       color: #99a3a8; }
-.lacssoinput[type='text']:hover::-webkit-input-placeholder, .lacssotextarea:hover::-webkit-input-placeholder {
+.lacssoinput[type='text']:hover::-webkit-input-placeholder, .lacssoinput[type='password']:hover::-webkit-input-placeholder, .lacssoinput[type='number']:hover::-webkit-input-placeholder, .lacssotextarea:hover::-webkit-input-placeholder {
       color: #99a3a8; }
-.lacssoinput[type='text'].disabled, .lacssotextarea.disabled {
+.lacssoinput[type='text'].disabled, .lacssoinput[type='password'].disabled, .lacssoinput[type='number'].disabled, .lacssotextarea.disabled {
     border-color: #3d3d3d;
     cursor: not-allowed; }
-.lacssoinput[type='text'].disabled.placeholder, .lacssotextarea.disabled.placeholder {
+.lacssoinput[type='text'].disabled.placeholder, .lacssoinput[type='password'].disabled.placeholder, .lacssoinput[type='number'].disabled.placeholder, .lacssotextarea.disabled.placeholder {
       color: #3d3d3d; }
-.lacssoinput[type='text'].disabled:-moz-placeholder, .lacssotextarea.disabled:-moz-placeholder {
+.lacssoinput[type='text'].disabled:-moz-placeholder, .lacssoinput[type='password'].disabled:-moz-placeholder, .lacssoinput[type='number'].disabled:-moz-placeholder, .lacssotextarea.disabled:-moz-placeholder {
       color: #3d3d3d; }
-.lacssoinput[type='text'].disabled::-moz-placeholder, .lacssotextarea.disabled::-moz-placeholder {
+.lacssoinput[type='text'].disabled::-moz-placeholder, .lacssoinput[type='password'].disabled::-moz-placeholder, .lacssoinput[type='number'].disabled::-moz-placeholder, .lacssotextarea.disabled::-moz-placeholder {
       color: #3d3d3d; }
-.lacssoinput[type='text'].disabled::-webkit-input-placeholder, .lacssotextarea.disabled::-webkit-input-placeholder {
+.lacssoinput[type='text'].disabled::-webkit-input-placeholder, .lacssoinput[type='password'].disabled::-webkit-input-placeholder, .lacssoinput[type='number'].disabled::-webkit-input-placeholder, .lacssotextarea.disabled::-webkit-input-placeholder {
       color: #3d3d3d; }
-.lacssoinput[type='text']:focus, .lacssotextarea:focus {
+.lacssoinput[type='text']:focus, .lacssoinput[type='password']:focus, .lacssoinput[type='number']:focus, .lacssotextarea:focus {
     background: rgba(120, 201, 207, 0.2);
     border-color: #78C9CF; }
-.lacssoinput[type='text']:focus.placeholder, .lacssotextarea:focus.placeholder {
+.lacssoinput[type='text']:focus.placeholder, .lacssoinput[type='password']:focus.placeholder, .lacssoinput[type='number']:focus.placeholder, .lacssotextarea:focus.placeholder {
       color: #78C9CF; }
-.lacssoinput[type='text']:focus:-moz-placeholder, .lacssotextarea:focus:-moz-placeholder {
+.lacssoinput[type='text']:focus:-moz-placeholder, .lacssoinput[type='password']:focus:-moz-placeholder, .lacssoinput[type='number']:focus:-moz-placeholder, .lacssotextarea:focus:-moz-placeholder {
       color: #78C9CF; }
-.lacssoinput[type='text']:focus::-moz-placeholder, .lacssotextarea:focus::-moz-placeholder {
+.lacssoinput[type='text']:focus::-moz-placeholder, .lacssoinput[type='password']:focus::-moz-placeholder, .lacssoinput[type='number']:focus::-moz-placeholder, .lacssotextarea:focus::-moz-placeholder {
       color: #78C9CF; }
-.lacssoinput[type='text']:focus::-webkit-input-placeholder, .lacssotextarea:focus::-webkit-input-placeholder {
+.lacssoinput[type='text']:focus::-webkit-input-placeholder, .lacssoinput[type='password']:focus::-webkit-input-placeholder, .lacssoinput[type='number']:focus::-webkit-input-placeholder, .lacssotextarea:focus::-webkit-input-placeholder {
       color: #78C9CF; }
 .lacsso.inline-form .inline-label {
   padding: 15px 0; }
