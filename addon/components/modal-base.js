@@ -13,8 +13,16 @@ export default Ember.Component.extend({
     //});
   //},
   keyUp(e) {
-    if (e.which === 27 && this.get('modalService.modalVisible')) {
+    if (e.which === 27 && this.escToClose()) {
       this.get('modalService').toggleModal();
+    }
+  },
+  escToClose() {
+    var modalService = this.get('modalService');
+    if (modalService.get('modalVisible') && modalService.get('modalOpts.escToClose')) {
+      return true;
+    } else {
+      return false;
     }
   },
   actions: {
