@@ -82,13 +82,17 @@ $spacing-property-map: (
     pb: padding-bottom,
     pl: padding-left,
     pr: padding-right,
+    in: text-indent,
 );
 
-@for $size from 0 through 10 {
-  $val: $size * 5;
-  .in-#{$val} { text-indent: 1px * $val; }
+@each $keyword, $property in $spacing-property-map {
+  .#{$keyword}-0 {
+    #{$property}: 0;
+  }
 
-  @each $keyword, $property in $spacing-property-map {
+  @for $size from 1 through 10 {
+    $val: $size * 5;
+
     .#{$keyword}-#{$val} {
       #{$property}: $val * 1px ;
     }
