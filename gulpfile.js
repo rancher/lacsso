@@ -41,7 +41,7 @@ gulp.task('push', ['commit'], function(cb) {
 });
 
 gulp.task('tag', ['push'], function(cb) {
-  git.tag(getVersion(), function(err) {
+  git.tag(getVersion(), getVersion(), function(err) {
     if (err) {
       return cb(err);
     }
