@@ -21,11 +21,11 @@ $spacing-property-map: (
 );
 
 @each $keyword, $property in $spacing-property-map {
-  .#{$keyword}-0 { #{$property}: 0; }
+  .#{$keyword}-0 { #{$property}: 0 !important; }
 
   @for $size from 1 through 10 {
     $val: $size * 5;
-    .#{$keyword}-#{$val} { #{$property}: $val * 1px ; }
+    .#{$keyword}-#{$val} { #{$property}: $val * 1px !important; }
   }
 }
 
