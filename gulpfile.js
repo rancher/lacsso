@@ -1,11 +1,11 @@
 'use strict';
 
+var fs = require('fs');
 var gulp = require('gulp');
 var git = require('gulp-git');
 var bump = require('gulp-bump');
 var filter = require('gulp-filter');
 var release = require('gulp-github-release');
-var path = require("path");
 var exec = require('child_process').exec;
 var cssPrefix = require('gulp-css-prefix');
 
@@ -24,7 +24,7 @@ gulp.task('bump', ['build'], function() {
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('prefix', ['build'], function() {
+gulp.task('prefix', ['bump'], function() {
   return gulp.src('dist/assets/lacsso.css')
     .pipe(cssPrefix({elementClass: 'lacsso', prefix: 'lacsso.'}))
     .pipe(gulp.dest('.'));
