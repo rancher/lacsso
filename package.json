@@ -43,6 +43,7 @@
     "ember-resolver": "^2.0.3",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.4.0",
+    "gulp-css-prefix": "^0.1.0",
     "gulp-filter": "^4.0.0",
     "gulp-git": "^1.11.3",
     "gulp-github-release": "^1.2.0",

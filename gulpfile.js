@@ -7,15 +7,32 @@ var filter = require('gulp-filter');
 var release = require('gulp-github-release');
 var path = require("path");
 var exec = require('child_process').exec;
+var cssPrefix = require('gulp-css-prefix');
 
 gulp.task('build', build);
-gulp.task('release', ['build'], function() { return inc('patch'); })
-gulp.task('release-patch', function() { return inc('patch'); })
-gulp.task('release-minor', function() { return inc('minor'); })
-gulp.task('release-major', function() { return inc('major'); })
+gulp.task('prefix', prefix);
+gulp.task('tag', ['build','prefix'], function() { return inc('patch'); })
+gulp.task('tag-patch', function() { return inc('patch'); })
+gulp.task('tag-minor', function() { return inc('minor'); })
+gulp.task('tag-major', function() { return inc('major'); })
+gulp.task('release', ['build','prefix','tag'], release);
 
-function build() {
-  return exec('./node_modules/.bin/ember build --environment=production');
+function build(cb) {
+  exec('./node_modules/.bin/ember build --environment=production', function(err) {
+    cb(err);
+  });
+}
+
+function prefix(cb) {
+  return gulp.src('dist/assets/lacsso.css')
+    .pipe(cssPrefix({elementClass: 'lacsso', prefix: 'lacsso.'}))
+    .pipe(gulp.dest('.'));
+}
+
+function release(cb) {
+  exec('npm publish', function(err) {
+    cb(err);
+  });
 }
 
 function inc(importance) {

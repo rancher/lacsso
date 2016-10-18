@@ -9,7 +9,6 @@ module.exports = function(defaults) {
       app: {
         css: {
           'lacsso': '/assets/lacsso.css',
-          'prefixed': '/assets/prefixed.css',
           'app': '/assets/dummy.css'
         }
       }
