@@ -10,7 +10,7 @@ var exec = require('child_process').exec;
 var cssPrefix = require('gulp-css-prefix');
 
 gulp.task('build', build);
-gulp.task('prefix', prefix);
+gulp.task('prefix', ['build'], prefix);
 gulp.task('tag', ['build','prefix'], function() { return inc('patch'); })
 gulp.task('tag-patch', function() { return inc('patch'); })
 gulp.task('tag-minor', function() { return inc('minor'); })
