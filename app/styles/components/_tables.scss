@@ -1,83 +1,106 @@
 table {
   position: relative;
+
   &.fixed {
     table-layout: fixed;
     width: 100%;
   }
+
   .fixed-header-actions {
-    background: darken($mid-grey, 10%);
     min-height: 40px;
-    width:100%;
-    z-index: 1;
+    width: 100%;
+    z-index: 10;
   }
+
   .fixed-header {
-    z-index: 1;
+    z-index: 10;
   }
+
   .container-actions {
-    float: right;
+    display: none;
+    width: 100px;
   }
+
   .container-select-all {
     margin-left: 12px;
     padding-top: 12px;
     width: 40px;
   }
+
   .fixed-header-placeholder {
     visibility: hidden;
-    padding: 0;
+
+    //padding: 0;
+    th {
+      padding: 0 !important;
+      height: 0 !important;
+    }
   }
+
   tr {
     th {
       padding: 10px;
-      color: white;
       font-weight: normal;
       text-align: left;
     }
+
     td {
       padding: 10px;
     }
   }
+
   thead {
     tr {
       background-color: $mid-grey;
     }
   }
+
   tbody {
     tr {
       border-bottom: solid thin $light-grey;
+
       td {
         border: solid thin $light-grey;
       }
     }
+
     &.striped {
       tr {
         border: none;
+
         td {
           border: none;
         }
+
         &:nth-child(even) {
           background-color: $light-grey;
         }
       }
     }
   }
+
   tbody {
     &.striped {
       tr {
         &:hover {
-          background-color: rgba($info, .15);
+          background-color: rgba($info, 0.15);
         }
       }
     }
   }
+
   &.solid {
     background: $light-grey;
+
     tbody {
       tr {
         &:hover {
-          background-color: rgba($info, .3);
+          background-color: rgba($info, 0.3);
         }
+
         td {
           border: solid 2px white;
+
           &:hover {
             background-color: $info;
           }

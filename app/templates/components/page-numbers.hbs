@@ -1,0 +1,46 @@
+<div class="pagination-container">
+  <ul class="lacsso pagination pagination-sm">
+    {{#if (gte content.page 2)}}
+      <li class="arrow prev enabled-arrow">
+        <a href="#" {{action "pageClicked" 1}}>&laquo;</a>
+      </li>
+    {{else}}
+      <li class="arrow prev disabled">
+        <a href="#">&laquo;</a>
+      </li>
+    {{/if}}
+
+    {{#if canStepBackward}}
+      <li class="arrow prev enabled-arrow">
+        <a href="#" {{action "incrementPage" -1}}>&lt;</a>
+      </li>
+    {{else}}
+      <li class="arrow prev disabled">
+        <a href="#" {{action "incrementPage" -1}}>&lt;</a>
+      </li>
+    {{/if}}
+
+    <li>
+      <div class="lacsso overview-text">{{pageCountContent}}</div>
+    </li>
+
+    {{#if canStepForward}}
+      <li class="arrow next enabled-arrow">
+        <a href="#" {{action "incrementPage" 1}}>&gt;</a>
+      </li>
+    {{else}}
+      <li class="arrow next disabled">
+        <a href="#" {{action "incrementPage" 1}}>&gt;</a>
+      </li>
+    {{/if}}
+    {{#if (lt content.page content.totalPages)}}
+      <li class="arrow prev enabled-arrow">
+        <a href="#" {{action "pageClicked" content.totalPages}}>&raquo;</a>
+      </li>
+    {{else}}
+      <li class="arrow prev disabled">
+        <a href="#">&raquo;</a>
+      </li>
+    {{/if}}
+  </ul>
+</div>

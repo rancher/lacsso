@@ -24,6 +24,12 @@ gulp.task('bump', ['build'], function() {
     .pipe(gulp.dest('./'));
 });
 
+gulp.task('just-prefix', function() {
+  return gulp.src('dist/assets/lacsso.css')
+    .pipe(cssPrefix({elementClass: 'lacsso', prefix: 'lacsso.'}))
+    .pipe(gulp.dest('.'));
+});
+
 gulp.task('prefix', ['bump'], function() {
   return gulp.src('dist/assets/lacsso.css')
     .pipe(cssPrefix({elementClass: 'lacsso', prefix: 'lacsso.'}))

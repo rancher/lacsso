@@ -1,3 +1,27 @@
 ///640
 @media only screen and (max-width: map-get($breakpoints, small)) {
 }
+
+// RANCHER MEDIA QUERIES
+/*xs*/
+/*480px*/
+@media (min-width: $screen-xs) {
+}
+
+/*small*/
+@media (min-width: $screen-sm) {
+}
+
+/*695-959*/
+@media (max-width: $screen-sm-max) {
+  .fixed-header-actions {
+    display: none;
+    visibility: hidden;
+  }
+  .grouped-actions {
+    display: none !important;
+  }
+  .container-actions {
+    display: block !important;
+  }
+}

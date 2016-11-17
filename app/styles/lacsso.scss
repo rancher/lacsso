@@ -1,88 +1,112 @@
-@charset 'UTF-8';
+@charset "UTF-8";
 
-@import 'abstracts/variables';
+@import "abstracts/variables";
+
 //@import 'bower_components/rancher-icons/style.scss';
-@import 'fonts/prompt';
+@import "fonts/prompt";
 
 // 1. Configuration and helpers
-@import
-  'abstracts/functions',
-  'abstracts/mixins',
-  'abstracts/decimal';
 
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/decimal";
 
 // 2. Vendors
-@import
-  'vendor/normalize',
-  'vendor/dropdowns';
+
+@import "vendor/normalize";
+@import "vendor/dropdowns";
 
 // 3. Base stuff
-@import
-  'base/base',
-  'base/color',
-  'base/typography',
-  'base/helpers';
+
+@import "base/base";
+@import "base/color";
+@import "base/typography";
+@import "base/helpers";
 
 // 4. Layout-related sections
-@import
-  'layout/header',
-  'layout/footer',
-  'layout/grid',
-  'layout/large',
-  'layout/medium',
-  'layout/small',
-  'layout/extra-small';
+
+@import "layout/header";
+@import "layout/footer";
+@import "layout/grid";
+@import "layout/large";
+@import "layout/medium";
+@import "layout/small";
+@import "layout/extra-small";
 
 // 5. Components
-@import
-  'components/alerts',
-  'components/modals',
-  'components/nav',
-  'components/button',
-  'components/banners',
-  'components/badges',
-  'components/dropdowns',
-  'components/tables',
-  'components/tabs',
-  'components/tooltip',
-  'components/forms';
+
+@import "components/alerts";
+@import "components/modals";
+@import "components/nav";
+@import "components/button";
+@import "components/banners";
+@import "components/badges";
+@import "components/dropdowns";
+@import "components/tables";
+@import "components/tabs";
+@import "components/tooltip";
+@import "components/forms";
+@import "components/pagination";
 
 // 6. Page-specific styles
-@import
-  'pages/home';
+
+@import "pages/home";
 
 // 7. Themes
-@import
-  'themes/default',
-  'themes/demo';
 
-
-
+@import "themes/default";
+@import "themes/demo";
 
 .icon-stack {
+  display: inline-block;
+  height: 2em;
+  line-height: 2em;
   position: relative;
+  vertical-align: middle;
+  width: 2em;
+
+  .stack-icon-1x,
+  .stack-icon-2x {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .stack-icon-1x {
+    line-height: inherit;
+  }
+  .stack-icon-2x {
+    font-size: 2em;
+  }
+
   &.checkbox {
     cursor: pointer;
+    height: 1.25em;
+    line-height: 1.25em;
+    width: 1.25em;
   }
+
   .icon {
     position: absolute;
     top: 0;
     left: 0;
   }
+
   .icon-square {
     color: transparent;
     border: 1px solid black;
   }
+
   .icon-check {
-    left: 2px;
-    font-size: 13px;
     top: 2px;
     visibility: hidden;
+    font-weight: 900;
   }
+
   &.checked {
     .icon-check {
       visibility: visible;
     }
   }
 }
-
