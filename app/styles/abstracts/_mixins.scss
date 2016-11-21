@@ -53,13 +53,13 @@
 ///Sets base color and darkens bg on hover
 @mixin bg-color($bg) {
   background: $bg;
-  &.btn:hover, a:hover {
-    background:darken($bg,10%);
-    transition: all 0.3s ease;
-  }
-  &.btn:active, a:focus {
-    background:darken($bg,25%);
-  } 
+  // &.btn:hover, a:hover {
+  //   background:darken($bg,10%);
+  //   transition: all 0.3s ease;
+  // }
+  // &.btn:active, a:focus {
+  //   background:darken($bg,25%);
+  // } 
 }
 
 ///Sets base color and darkens bg on hover
