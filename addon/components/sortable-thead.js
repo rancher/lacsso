@@ -10,9 +10,10 @@ export default Ember.Component.extend({
   width: null,
   label: null,
   ariaRole: ['columnheader'],
+  isActions: false,
 
-  current: null,
-  descending: null,
+  current: Ember.computed.alias('sortable.sortBy'),
+  descending: Ember.computed.alias('sortable.descending'),
 
   activeAscending: Ember.computed('name','current','descending', function() {
     return !this.get('descending') && this.get('current') === this.get('name');

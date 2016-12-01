@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   tagName: 'div',
   checked: false,
   classNameBindings: ['checked'],
-  classNames: ['icon-stack', 'checkbox'],
+  classNames: ['lacsso', 'icon-stack', 'checkbox'],
   click() {
     this.toggleProperty('checked');
     this.attrs.clickHappened();

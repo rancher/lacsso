@@ -36,7 +36,8 @@
     <h2>Table Component</h2>
     {{sortable-table body=tableModelData headers=tableHeaderList bulkActions=true}}
     <hr />
-    {{sortable-table body=tableModelData headers=tableHeaderList}}
+    {{#sortable-table body=tableModelData headers=tableHeaderList}}
+    {{/sortable-table}}
   </div>
 
   {{modal-root}}
