@@ -801,15 +801,43 @@ hr.lacsso {
 .lacsso.text-error {
   color: #F15354; }
 
+*.lacsso[class*=" bg-"] a.lacsso {
+  color: white;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  border-bottom: solid 2px white;
+  vertical-align: middle;
+  padding: 4px 4px 2px 4px; }
+  *.lacsso[class*=" bg-"] a.lacsso:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-transition: -webkit-transform 400ms;
+    -moz-transition: -moz-transform 400ms;
+    transition: transform 400ms;
+    -webkit-transform: translateX(-100%); }
+  *.lacsso[class*=" bg-"] a.lacsso:hover {
+    text-decoration: none;
+    background-color: transparent; }
+    *.lacsso[class*=" bg-"] a.lacsso:hover:before {
+      -webkit-transform: translateX(0%);
+      -moz-transform: translateX(0%);
+      transform: translateX(0%); }
+
 .lacsso.bg-default, .lacsso.badge, .lacsso.tabs ul.lacsso.lacsso.tab-header li.lacsso a, .lacsso.tooltip {
   background: #ecf0f1;
   background-color: #ecf0f1;
   color: #3d3d3d; }
-  .lacsso.bg-default.lacsso.btn:hover, .lacsso.btn.lacsso.badge:hover, .lacsso.tabs ul.lacsso.lacsso.tab-header li.lacsso a.lacsso.btn:hover, .lacsso.btn.lacsso.tooltip:hover, .lacsso.bg-default a.lacsso:hover, .lacsso.badge a.lacsso:hover, .lacsso.tabs ul.lacsso.lacsso.tab-header li.lacsso a.lacsso a:hover, .lacsso.tooltip a.lacsso:hover {
-    background: #cfd9db;
-    transition: all 0.3s ease; }
-  .lacsso.bg-default.lacsso.btn:active, .lacsso.btn.lacsso.badge:active, .lacsso.tabs ul.lacsso.lacsso.tab-header li.lacsso a.lacsso.btn:active, .lacsso.btn.lacsso.tooltip:active, .lacsso.bg-default a.lacsso:focus, .lacsso.badge a.lacsso:focus, .lacsso.tabs ul.lacsso.lacsso.tab-header li.lacsso a.lacsso a:focus, .lacsso.tooltip a.lacsso:focus {
-    background: #a3b6bb; }
+  .lacsso.bg-default a.lacsso, .lacsso.badge a.lacsso, .lacsso.tabs ul.lacsso.lacsso.tab-header li.lacsso a.lacsso a, .lacsso.tooltip a.lacsso {
+    color: #0075A8;
+    border-bottom: solid 2px #0075A8; }
+    .lacsso.bg-default a.lacsso:before, .lacsso.badge a.lacsso:before, .lacsso.tabs ul.lacsso.lacsso.tab-header li.lacsso a.lacsso a:before, .lacsso.tooltip a.lacsso:before {
+      background: rgba(0, 117, 168, 0.2); }
 
 .lacsso.bg-disabled, input.lacsso[type='text'].disabled,
 input.lacsso[type='password'].disabled,
@@ -822,61 +850,31 @@ textarea.lacsso.lacsso.disabled {
   background: #0075A8;
   background-color: #0075A8;
   color: white; }
-  .lacsso.bg-primary.lacsso.btn:hover, .lacsso.bg-primary a.lacsso:hover {
-    background: #005175;
-    transition: all 0.3s ease; }
-  .lacsso.bg-primary.lacsso.btn:active, .lacsso.bg-primary a.lacsso:focus {
-    background: #001c29; }
 
 .lacsso.bg-secondary {
   background: #34495E;
   background-color: #34495E;
   color: white; }
-  .lacsso.bg-secondary.lacsso.btn:hover, .lacsso.bg-secondary a.lacsso:hover {
-    background: #22303d;
-    transition: all 0.3s ease; }
-  .lacsso.bg-secondary.lacsso.btn:active, .lacsso.bg-secondary a.lacsso:focus {
-    background: #07090c; }
 
 .lacsso.bg-success {
   background: #27AE5F;
   background-color: #27AE5F;
   color: white; }
-  .lacsso.bg-success.lacsso.btn:hover, .lacsso.bg-success a.lacsso:hover {
-    background: #1e8448;
-    transition: all 0.3s ease; }
-  .lacsso.bg-success.lacsso.btn:active, .lacsso.bg-success a.lacsso:focus {
-    background: #104626; }
 
 .lacsso.bg-info {
   background: #78C9CF;
   background-color: #78C9CF;
   color: #3d3d3d; }
-  .lacsso.bg-info.lacsso.btn:hover, .lacsso.bg-info a.lacsso:hover {
-    background: #52bac2;
-    transition: all 0.3s ease; }
-  .lacsso.bg-info.lacsso.btn:active, .lacsso.bg-info a.lacsso:focus {
-    background: #348d93; }
 
 .lacsso.bg-warning {
   background: #E67E22;
   background-color: #E67E22;
   color: white; }
-  .lacsso.bg-warning.lacsso.btn:hover, .lacsso.bg-warning a.lacsso:hover {
-    background: #bf6516;
-    transition: all 0.3s ease; }
-  .lacsso.bg-warning.lacsso.btn:active, .lacsso.bg-warning a.lacsso:focus {
-    background: #7b410e; }
 
 .lacsso.bg-error {
   background: #F15354;
   background-color: #F15354;
   color: white; }
-  .lacsso.bg-error.lacsso.btn:hover, .lacsso.bg-error a.lacsso:hover {
-    background: #ed2425;
-    transition: all 0.3s ease; }
-  .lacsso.bg-error.lacsso.btn:active, .lacsso.bg-error a.lacsso:focus {
-    background: #b60f10; }
 
 .lacsso.bg-transparent {
   background-color: transparent; }
@@ -1824,13 +1822,22 @@ header.lacsso {
 /*small*/
 /*695-959*/
 @media (max-width: 959px) {
+  .lacsso.sortable-table table.lacsso {
+    margin-top: 25px; }
+  .lacsso.sortable-table tbody.lacsso {
+    margin-top: 50px; }
+  .lacsso.sortable-table .lacsso.fixed-header-actions {
+    display: block;
+    visibility: visible; }
+  .lacsso.sortable-table .lacsso.select-for-actions {
+    text-align: left; }
+  .lacsso.fixed-header-placeholder {
+    height: 0;
+    display: none; }
   .lacsso.fixed-header-actions {
-    display: none;
-    visibility: hidden; }
-  .lacsso.grouped-actions {
-    display: none !important; }
-  .lacsso.container-actions {
-    display: block !important; } }
+    display: block;
+    visibility: visible;
+    position: relative; } }
 
 /*0-694*/
 .lacsso.alert {
@@ -2057,13 +2064,13 @@ table.lacsso {
     table-layout: fixed;
     width: 100%; }
   table.lacsso .lacsso.fixed-header-actions {
+    padding-top: 5px;
     min-height: 40px;
     width: 100%;
     z-index: 10; }
   table.lacsso .lacsso.fixed-header {
     z-index: 10; }
   table.lacsso .lacsso.container-actions {
-    display: none;
     width: 100px; }
   table.lacsso .lacsso.container-select-all {
     margin-left: 12px;
@@ -2102,6 +2109,11 @@ table.lacsso {
       border: solid 2px white; }
       table.lacsso.lacsso.solid tbody.lacsso tr.lacsso td:hover {
         background-color: #78C9CF; }
+  table.lacsso .lacsso.select-for-action {
+    text-align: center; }
+
+.lacsso.container-search .lacsso.help-block {
+  margin-bottom: 0; }
 
 .lacsso.tabs {
   position: relative; }
@@ -2120,11 +2132,6 @@ table.lacsso {
           background: #0075A8;
           background-color: #0075A8;
           color: white; }
-          .lacsso.tabs ul.lacsso.lacsso.tab-header li.lacsso a.lacsso.active.btn:hover, .lacsso.tabs ul.lacsso.lacsso.tab-header li.lacsso a.lacsso.lacsso.active a:hover {
-            background: #005175;
-            transition: all 0.3s ease; }
-          .lacsso.tabs ul.lacsso.lacsso.tab-header li.lacsso a.lacsso.active.btn:active, .lacsso.tabs ul.lacsso.lacsso.tab-header li.lacsso a.lacsso.lacsso.active a:focus {
-            background: #001c29; }
   .lacsso.tabs .lacsso.tab-content {
     padding: 40px;
     border: solid 2px #ecf0f1; }

@@ -59,16 +59,12 @@ export default Ember.Mixin.create(ThrottledResize, {
     if (bulkActions) {
       $actionRow.css({
         'position': 'fixed',
-        'display': 'block',
-        'visibility': 'visible',
         'top': 0,
         'height': tableProps.actionsHeight,
       });
     }
     $fixedHeader.css({
       'position': 'fixed',
-      'display': 'block',
-      'visibility': 'visible',
       'top': bulkActions ? tableProps.actionsHeight : 0,
       'height': tableProps.fixedHeaderHeight,
     });
@@ -85,18 +81,14 @@ export default Ember.Mixin.create(ThrottledResize, {
 
     if (this.get('bulkActions')) {
       $actionRow.css({
-        'position': '',
+        'position': 'relative',
         'top': '',
-        'display': 'none',
-        'visibility': 'hidden',
       });
     }
 
     $fixedHeader.css({
       'position': '',
       'top': '',
-      'display': 'none',
-      'visibility': 'hidden',
     });
     $table.css({
       'margin-top': ''
@@ -112,7 +104,7 @@ export default Ember.Mixin.create(ThrottledResize, {
     let containerBottom = $table.height() + $table.offset().top;
 
     if ($windowScroll < containerBottom ) {
-      if ($scrollTop >= offset) {
+      if ($scrollTop > offset) {
         this.buildTableWidths();
         this.positionHeaders();
       } else if ($scrollTop <= offset) {

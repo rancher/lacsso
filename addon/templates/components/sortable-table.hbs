@@ -1,3 +1,14 @@
+<div class="lacsso row inline-form gutless">
+  <div class="lacsso col span-1">
+    <label for="table-search" style="max-width:45px;padding-top:5px;">Search</label>
+  </div>
+  <div class="container-search lacsso col span-3 ">
+    {{input value=searchText class="form-control input-sm" name="table-search"}}
+  </div>
+  <div class="lacsso col span-1">
+    <button class="btn bg-danger btn-sm" {{action 'clearSearch'}} disabled={{not searchText}}>Clear</button>
+  </div>
+</div>
 <table class="fixed lacsso grid sortable-table">
   <thead>
     <tr class='lacsso fixed-header-placeholder'>
@@ -11,18 +22,6 @@
     {{#if bulkActions}}
       <div class='lacsso fixed-header-actions'>
         {{page-numbers content=pagedContent class="lacsso pagination-right" pageCountContent=pageCountContent}}
-        <div class="lacsso btn-group grouped-actions">
-          {{#each availableActions as |action|}}
-            {{#if (eq selectedNodes.length 0)}}
-              <button type="button" class="btn btn-sm btn-default" disabled=true>{{action.bulkActionName}}</button>
-            {{else if (gt selectedNodes.length 1)}}
-              <button type="button" class="btn btn-sm btn-default" {{action 'executeBulkAction' action.action}}  disabled={{action.disabled}}>{{action.bulkActionName}}</button>
-            {{else}}
-              <button type="button" class="btn btn-sm btn-default" {{action 'executeAction' action.action}} disabled={{action.disabled}}>{{if action.bulkActionName action.bulkActionName action.action}}</button>
-            {{/if}}
-          {{/each}}
-        </div>
-
         <div class='lacsso container-actions'>
           {{#if availableActions}}
             {{#rl-dropdown-container class="dropdown"}}
@@ -41,7 +40,7 @@
                       </a>
                     </li>
                   {{else}}
-                    <li class="" {{action 'executeAction' action.action}}>
+                    <li class="" {{actiactionon 'executeAction' action.action}}>
                       <a href="#" tabindex={{index}}>
                         {{action.action}}
                         <i class="{{action.icon}}"></i>
@@ -63,7 +62,7 @@
     <tr class='lacsso fixed-header'>
       {{#if bulkActions}}
         <th width='40' class="text-center">
-          {{check-box clickHappened=(action 'selectUnselectAll')}}
+          {{check-box classNames="lacsso ml-5 select-all-check" click=(action "selectAll")}}
         </th>
       {{/if}}
       {{#each headers as | header |}}
@@ -84,8 +83,8 @@
     {{#each pagedContent as |content|}}
       <tr>
         {{#if bulkActions}}
-          <td width='40' class="text-center">
-            {{check-box clickHappened=(action 'selectUnselect' content) selectAll=selectAll}}
+          <td width='40' class="lacsso select-for-action">
+            {{check-box nodeId=content.id}}
           </td>
         {{/if}}
         {{#if hasBlock}}
