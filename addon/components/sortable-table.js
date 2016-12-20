@@ -38,7 +38,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
     });
   },
 
-  pageChanged: Ember.observer('pagedContent.@each.page', function() {
+  pageChanged: Ember.observer('pagedContent.page', function() {
     if (this.get('selectedNodes')) {
       this.mergeAvailableActions(this.set('selectedNodes', []));
       Ember.$(this.element).find('thead tr th input[type="checkbox"]').prop('checked', false);
@@ -70,11 +70,12 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
   searchObserver: Ember.observer('searchText', function() {
     var allContent =       this.get('arranged');
     var originalResults =  this.get('originalResults');
+    var selectedNodes = this.get('selectedNodes');
     var searchedResults =  [];
     var searchText =       this.get('searchText');
     var searchFields =     [];
+    var nodesToRemove =    [];
 
-    this.clearAllNodes();
     this.get('headers').forEach((header) => {
       if (get(header, 'searchField')) {
         searchFields.push(get(header, 'searchField'));
@@ -97,7 +98,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
 
     originalResults.forEach((item) => {
       searchFields.forEach((field) => {
-        if (field.length > 0) {
+        if (field && field.length > 0) {
           if (item.get(field) && item.get(field).indexOf(searchText) !== -1) {
             searchedResults.push(item);
           }
@@ -105,11 +106,21 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
       });
     });
 
+    // if we have any nodes that were removed by the search then we should remove them from
+    // the selected nodes list
+    selectedNodes.forEach((selected) => {
+      if (!searchedResults.findBy('id', selected.get('id'))) {
+        nodesToRemove.push(selected);
+      }
+    });
+
+    this.send('selectUnselectMulti', [], nodesToRemove);
+
     this.set('body', searchedResults.uniqBy('id'));
 
   }),
 
-  toggleRowClass: function() {
+  toggleRowClass: Ember.observer('selectedNodes.[]', function() {
     var selectedNodes = this.get('selectedNodes');
     if (selectedNodes.length > 1) {
       this.get('selectedNodes').forEach((node) => {
@@ -132,7 +143,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
         }
       });
     }
-  }.observes('selectedNodes.[]'),
+  }),
 
   buildTRSelections: function(e) {
     let el = Ember.$(e.currentTarget).find('input[type="checkbox"]');
@@ -217,29 +228,34 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
 
     el.find('tbody tr').on('click', function(e) {
       let type = e.currentTarget.tagName;
-      let mustPropigate = Ember.$(e.target).hasClass('must-propigate');
+      let mustPropigate = Ember.$(e.target).parent().hasClass('must-propigate');
       let nodeId = null;
       let prevClick =    that.get('previousClick');
       let content =      that.get('pagedContent.content');
 
       if (type === 'TR' && !mustPropigate) {
 
-        if (e.target.tagName !== 'INPUT') {
+        if (e.target.tagName !== 'INPUT' && !Ember.$(e.target).hasClass('select-for-action')) {
           if (!prevClick) {
             that.set('previousClick', Ember.$(this).find('input[type="checkbox"]')[0]);
           }
           that.buildTRSelections(e);
+          that.set('previousClick', Ember.$(this).find('input[type="checkbox"]')[0]);
         } else {
           nodeId = $e(e.currentTarget).find('input[type="checkbox"]').attr('nodeid');
           let $checkboxes =  el.find('input[type="checkbox"]');
 
+          if (Ember.$(e.target).hasClass('select-for-action')) {
+            Ember.$(e.target).find('input[type="checkbox"]').prop('checked', true);
+          }
+
           if (!prevClick) {
-            that.set('previousClick', this);
+            that.set('previousClick', Ember.$(this).find('input[type="checkbox"]')[0]);
           }
 
           if (e.shiftKey) {
 
-            let start = $checkboxes.index(this);
+            let start = $checkboxes.index($(this).find('input[type="checkbox"]'));
             let end =  $checkboxes.index(prevClick);
 
             that.buildRangeSelections(start, end, $checkboxes);
@@ -248,15 +264,9 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
 
             that.send('selectUnselectSingle', content.findBy('id', nodeId));
           }
+          that.set('previousClick', Ember.$(this).find('input[type="checkbox"]')[0]);
         }
 
-      } else {
-        e.stopPropagation();
-      }
-      if (type === 'TR') {
-        that.set('previousClick', Ember.$(this).find('input[type="checkbox"]')[0]);
-      } else {
-        that.set('previousClick', this);
       }
     });
   },

@@ -27,6 +27,13 @@ table {
     width: 40px;
   }
 
+  .fixed-header {
+    th {
+      button {
+        padding: 0;
+      }
+    }
+  }
   .fixed-header-placeholder {
     visibility: hidden;
 
@@ -38,12 +45,6 @@ table {
   }
 
   tr {
-    th {
-      padding: 10px;
-      font-weight: normal;
-      text-align: left;
-    }
-
     td {
       padding: 10px;
     }
@@ -110,10 +111,5 @@ table {
   }
   .select-for-action {
     text-align: center;
-  }
-}
-.container-search {
-  .help-block {
-    margin-bottom: 0;
   }
 }
