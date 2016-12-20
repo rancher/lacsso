@@ -109,12 +109,38 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
 
   }),
 
+  toggleRowClass: function() {
+    var selectedNodes = this.get('selectedNodes');
+    if (selectedNodes.length > 1) {
+      this.get('selectedNodes').forEach((node) => {
+        let input = Ember.$(`input[nodeid=${node.get('id')}]`);
+        let checked = input.is(':checked');
+        if (checked) {
+          Ember.$(input).closest('tr').addClass('row-selected');
+        } else {
+          Ember.$(input).closest('tr').removeClass('row-selected');
+        }
+      });
+    } else {
+      let $checkboxes = Ember.$(this.element).find('table tbody input[type="checkbox"]');
+      $checkboxes.each((idx, checkbox) => {
+        let checked = Ember.$(checkbox).is(':checked');
+        if (checked) {
+          Ember.$(checkbox).closest('tr').addClass('row-selected');
+        } else {
+          Ember.$(checkbox).closest('tr').removeClass('row-selected');
+        }
+      });
+    }
+  }.observes('selectedNodes.[]'),
+
   buildTRSelections: function(e) {
     let el = Ember.$(e.currentTarget).find('input[type="checkbox"]');
 
     if (el.is(':checked')) {
 
       el.prop('checked', false);
+      this.send('selectUnselectMulti', [], [this.get('pagedContent.content').findBy('id', el.attr('nodeid'))]);
     } else {
       let selectedNodes = this.get('selectedNodes');
       let nodesToRemove = [];
@@ -189,25 +215,22 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
     var el =    $e(this.element).find('table');
     var that =  this; // need this context in click function and can't use arrow func there
 
-    el.find('tbody tr input[type="checkbox"], tbody tr').on('click', function(e) {
+    el.find('tbody tr').on('click', function(e) {
       let type = e.currentTarget.tagName;
+      let mustPropigate = Ember.$(e.target).hasClass('must-propigate');
       let nodeId = null;
       let prevClick =    that.get('previousClick');
       let content =      that.get('pagedContent.content');
 
-      if (type === 'TR' || type === 'INPUT') {
+      if (type === 'TR' && !mustPropigate) {
 
-        e.stopImmediatePropagation();
-
-
-
-        if (type === 'TR') {
+        if (e.target.tagName !== 'INPUT') {
           if (!prevClick) {
             that.set('previousClick', Ember.$(this).find('input[type="checkbox"]')[0]);
           }
           that.buildTRSelections(e);
         } else {
-          nodeId = $e(e.currentTarget).attr('nodeid');
+          nodeId = $e(e.currentTarget).find('input[type="checkbox"]').attr('nodeid');
           let $checkboxes =  el.find('input[type="checkbox"]');
 
           if (!prevClick) {
@@ -216,8 +239,8 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
 
           if (e.shiftKey) {
 
-            let start =                 $checkboxes.index(this);
-            let end =                   $checkboxes.index(prevClick);
+            let start = $checkboxes.index(this);
+            let end =  $checkboxes.index(prevClick);
 
             that.buildRangeSelections(start, end, $checkboxes);
 
@@ -227,6 +250,8 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
           }
         }
 
+      } else {
+        e.stopPropagation();
       }
       if (type === 'TR') {
         that.set('previousClick', Ember.$(this).find('input[type="checkbox"]')[0]);
@@ -335,8 +360,6 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
       out = this.mergeBulkActions(data);
     } else if (data.length === 1) {
       out = this.mergeSingleActions(data[0]);
-    } else {
-      out = this.get('bulkActionsList');
     }
 
     this.set('availableActions', out);
