@@ -5,6 +5,9 @@
 /// Regular font family
 /// @type List
 $text-font-stack: 'Prompt', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$bold-weight: bold;
+$base-font-size: 15px;
+$base-line-height: 1.5em;
 
 /// Code (monospace) font family
 /// @type List
@@ -16,7 +19,7 @@ $secondary: #34495E !default;
 
 ///State colors
 $success: #27AE5F !default;
-$warning: #E67E22 !default;
+$warning: #F1C40F !default;
 $error: #F15354 !default;
 $info: #78C9CF !default;
 

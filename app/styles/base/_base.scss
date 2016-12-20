@@ -46,9 +46,6 @@ html {
   box-sizing: inherit;
 } 
 
-* {
-  transition: ease-in-out all .1s;
-}
 /**
  * Basic styles for links
  */
@@ -62,13 +59,23 @@ a {
   }
 }
 
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #e67e22;
+  background-color: #fcf2e9;
+  border-radius: 1px;
+}
+
 pre {
   background-color: $dark-grey;
   
   code {
     color: $light-grey;
+    background-color: transparent;
   }
 }
+
 
 hr {
     border: 0;

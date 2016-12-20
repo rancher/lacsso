@@ -23,7 +23,7 @@
   }
 }
 
-large-modal {
+.large-modal {
   &.modal-container {
     width: calc(100% - 40px);
     max-width: 990px;
@@ -31,7 +31,7 @@ large-modal {
   }
 }
 
-medium-modal {
+.medium-modal {
   &.modal-container {
     width: calc(100% - 40px);
     max-width: 750px;

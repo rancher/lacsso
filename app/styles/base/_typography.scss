@@ -3,7 +3,9 @@
  */
 body {
   color: $text-color;
-  font: normal 15px / 1.5 $text-font-stack;
+  font-family: $text-font-stack;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
 }
 
 h1,
@@ -15,3 +17,27 @@ h6 {
   color: $mid-grey;
   font-weight: normal;
 }
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+h4 {
+  // font-size: ;
+}
+
+h5 {
+  font-size: .83em;
+}
+
+h6 {
+  font-size: .67em;
+} 

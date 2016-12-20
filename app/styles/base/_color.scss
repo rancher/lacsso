@@ -2,8 +2,8 @@
   color: $primary;
 }
 
-.text-disabled {
-  color: $primary;
+.text-disabled, .text-muted {
+  color: $mid-grey;
 
 }
 
@@ -112,4 +112,13 @@
 }
 .bg-transparent {
   background-color: transparent;
+
+  a {
+    &:before {
+      display: none;
+    }
+    
+    border-bottom: none;
+    padding: 0;
+  }
 }
