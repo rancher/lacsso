@@ -7,17 +7,17 @@ table {
   }
 
   .fixed-header-actions {
+    padding-top: 5px;
     min-height: 40px;
     width: 100%;
-    z-index: 10;
+    z-index: 3;
   }
 
   .fixed-header {
-    z-index: 10;
+    z-index: 2;
   }
 
   .container-actions {
-    display: none;
     width: 100px;
   }
 
@@ -107,5 +107,13 @@ table {
         }
       }
     }
+  }
+  .select-for-action {
+    text-align: center;
+  }
+}
+.container-search {
+  .help-block {
+    margin-bottom: 0;
   }
 }
