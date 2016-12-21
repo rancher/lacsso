@@ -9,13 +9,13 @@
       {{/each}}
     </tr>
     {{#if bulkActions}}
-      <div class='lacsso fixed-header-actions row gutless'>
-        <div class="lacsso col span-2 mt-0">
+      <div class='lacsso fixed-header-actions row gutless mb-10'>
+        <div class="lacsso col span-2 m-0">
           <div class='lacsso container-actions'>
             {{#if availableActions}}
               {{#rl-dropdown-container class="dropdown"}}
                 {{#rl-dropdown-toggle class="btn btn-sm btn-default"}}
-                  Bulk Actions <span class="lacsso icon icon-chevron-down"></span>
+                  Actions <span class="lacsso icon icon-chevron-down"></span>
                 {{/rl-dropdown-toggle}}
 
                 {{#rl-dropdown tagName="ul" class="resource-actions global-actions dropdown-menu dropdown-menu-right" closeOnChildClick="a:link"}}
@@ -31,7 +31,7 @@
                     {{else}}
                       <li class="" {{actiactionon 'executeAction' action.action}}>
                         <a href="#" tabindex={{index}}>
-                          {{action.action}}
+                          {{action.translatedLabel}}
                           <i class="{{action.icon}}"></i>
                         </a>
                       </li>
@@ -41,25 +41,23 @@
               {{/rl-dropdown-container}}
             {{else}}
               <button class="btn btn-sm btn-default" disabled>
-                Bulk Actions <span class="lacsso icon icon-chevron-down"></span>
+                Actions <span class="lacsso icon icon-chevron-down"></span>
               </button>
             {{/if}}
           </div>
         </div>
-        <div class="lacsso col span-7 mt-0">
+        <div class="lacsso col span-7 m-0 container-search">
           <div class="lacsso row inline-form gutless">
-            <div class="lacsso col span-1 m-0" style="min-width:100px;">
-              <label for="table-search" style="max-width:45px;padding-top:5px;">Search</label>
-            </div>
-            <div class="container-search lacsso col span-5 m-0">
+            <span class="lacsso col span-1 offset-3 mt-0 mb-0 pr-10" style="min-width:100px;line-height:27px;text-align:right;">
+              <label for="table-search">Search</label>
+            </span>
+            <span class="container-search lacsso col span-5 mt-0 mb-0">
               {{input value=searchText class="form-control input-sm" name="table-search"}}
-            </div>
-            <div class="lacsso col span-1 m-0">
-              <button class="btn bg-danger btn-sm" {{action 'clearSearch'}} disabled={{not searchText}}>Clear</button>
-            </div>
+            </span>
+            <button class="col span-1 input-label mt-0 mb-0 btn bg-danger btn-sm" {{action 'clearSearch'}} disabled={{not searchText}}>Clear</button>
           </div>
         </div>
-        <div class="lacsso col span-3 mt-0" style="min-width:200px;">
+        <div class="lacsso col span-3 m-0" style="min-width:200px;">
           {{page-numbers content=pagedContent class="lacsso pull-right" pageCountContent=pageCountContent}}
         </div>
       </div>
@@ -68,7 +66,7 @@
     <tr class='lacsso fixed-header'>
       {{#if bulkActions}}
         <th width='40' class="text-center">
-          {{check-box classNames="lacsso ml-5 select-all-check" click=(action "selectAll")}}
+          {{check-box classNames="lacsso select-all-check" click=(action "selectAll")}}
         </th>
       {{/if}}
       {{#each headers as | header |}}

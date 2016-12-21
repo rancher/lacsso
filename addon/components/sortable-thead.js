@@ -4,7 +4,7 @@ import layout from '../templates/components/sortable-thead';
 export default Ember.Component.extend({
   layout,
   tagName: 'TH',
-  classNames: ['sortable'],
+  classNames: ['sortable', 'lacsso'],
   name: null,
   sortable: null,
   width: null,
