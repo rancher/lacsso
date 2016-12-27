@@ -2,8 +2,8 @@ import Ember from 'ember';
 import ThrottledResize from './throttled-resize';
 
 const tableProps = {
-  actionsHeight: '40px',
-  fixedHeaderHeight: '60px',
+  actionsHeight: '60px',
+  fixedHeaderHeight: '40px',
 };
 
 export default Ember.Mixin.create(ThrottledResize, {
@@ -70,7 +70,7 @@ export default Ember.Mixin.create(ThrottledResize, {
     });
 
     $table.css({
-      'margin-top': tableProps.actionsHeight + tableProps.fixedHeaderHeight
+      'margin-top': (parseInt(tableProps.actionsHeight,10) + parseInt(tableProps.fixedHeaderHeight,10)) + 'px'
     });
   },
 

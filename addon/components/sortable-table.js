@@ -255,7 +255,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
 
           if (e.shiftKey) {
 
-            let start = $checkboxes.index($(this).find('input[type="checkbox"]'));
+            let start = $checkboxes.index(Ember.$(this).find('input[type="checkbox"]'));
             let end =  $checkboxes.index(prevClick);
 
             that.buildRangeSelections(start, end, $checkboxes);
