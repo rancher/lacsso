@@ -316,6 +316,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
         this.send('selectUnselectMulti', [], nodes);
       }
     },
+
     selectUnselectMulti: function(nodesToAdd, nodesToRemove) {
       let selectedNodes =     this.get('selectedNodes');
 
@@ -334,6 +335,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
 
       this.mergeAvailableActions(selectedNodes);
     },
+
     selectUnselectSingle: function(node) {
       let selectedNodes =  this.get('selectedNodes');
       let indexOfNode =    -1;
@@ -363,6 +365,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
       });
     }
   },
+
   mergeAvailableActions: function(data) { //selectedNodes
     var out = null;
 
@@ -378,17 +381,12 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
 
   mergeBulkActions: function(nodes) {
     var commonActions =  Ember.$().extend(true, [], this.get('bulkActionsList'));
-    var localActions =   [];
 
     // loop over every selectedNode to find available actions
     nodes.forEach((item, idx) => {
       let actions = get(item, 'translatedAvaileableActions').filter((action) => {
         return action.enabled && action.bulkable;
       });
-
-      if (idx === 0) {
-        localActions = actions;
-      }
 
       commonActions.forEach((action) => {
         if (!actions.findBy('action', action.action)) {

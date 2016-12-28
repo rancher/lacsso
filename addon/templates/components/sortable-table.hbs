@@ -22,14 +22,14 @@
                   <li class="resource-actions-tabbable"><a tabindex="-1" id="resource-actions-first" aria-label="Select an Action below"></a></li>
                   {{#each availableActions as | action index|}}
                     {{#if action.bulkActionName}}
-                      <li {{action 'executeBulkAction' action.action}}>
+                      <li {{action 'executeBulkAction' action.action}} class="{{if action.disabled 'disabled'}}">
                         <a href="#" tabindex={{index}}>
                           {{action.bulkActionName}}
                           <i class="{{action.icon}}"></i>
                         </a>
                       </li>
                     {{else}}
-                      <li {{actiactionon 'executeAction' action.action}}>
+                      <li {{actiactionon 'executeAction' action.action}} class="{{if action.disabled 'disabled'}}">
                         <a href="#" tabindex={{index}}>
                           {{action.translatedLabel}}
                           <i class="{{action.icon}}"></i>
