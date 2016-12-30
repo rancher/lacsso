@@ -2,7 +2,7 @@
   <thead>
     <tr class="lacsso fixed-header-placeholder">
       {{#if bulkActions}}
-        <th class="lacsso" width="30"></th>
+        <th class="lacsso" width="40"></th>
       {{/if}}
       {{#each headers as | header idx|}}
         <th width={{if header.width header.width}}></th>
@@ -21,17 +21,17 @@
                 {{#rl-dropdown tagName="ul" class="resource-actions global-actions dropdown-menu dropdown-menu-right" closeOnChildClick="a:link"}}
                   <li class="resource-actions-tabbable"><a tabindex="-1" id="resource-actions-first" aria-label="Select an Action below"></a></li>
                   {{#each availableActions as | action index|}}
-                    {{#if action.bulkActionName}}
-                      <li {{action 'executeBulkAction' action.action}} class="{{if action.disabled 'disabled'}}">
-                        <a href="#" tabindex={{index}}>
-                          {{action.bulkActionName}}
+                    {{#if action.disabled}}
+                      <li class="disabled">
+                        <a href="#" onclick="return false;" tabindex={{index}}>
+                          {{if action.bulkActionName action.bulkActionName action.translatedLabel}}
                           <i class="{{action.icon}}"></i>
                         </a>
                       </li>
                     {{else}}
-                      <li {{actiactionon 'executeAction' action.action}} class="{{if action.disabled 'disabled'}}">
+                      <li {{action 'executeBulkAction' action.action}}>
                         <a href="#" tabindex={{index}}>
-                          {{action.translatedLabel}}
+                          {{if action.bulkActionName action.bulkActionName action.translatedLabel}}
                           <i class="{{action.icon}}"></i>
                         </a>
                       </li>
@@ -41,7 +41,7 @@
               {{/rl-dropdown-container}}
             {{else}}
               <button class="btn btn-sm btn-primary" disabled>
-                Actions <span class="lacsso icon icon-chevron-down"></span>
+                Actions <span class="lacsso icon icon-chevron-down" style="position: relative; top: 2px;"></span>
               </button>
             {{/if}}
           </div>
@@ -49,9 +49,9 @@
         <div class="lacsso col span-4">
           <div class="lacsso input-group">
             <span class="input-group-addon">
-              <label for="table-search" style="display: table-cell; font-weight: normal;">Search:</label>
+              <label style="display: table-cell; font-weight: normal;">Search:</label>
             </span>
-            {{input value=searchText type="search" class="form-control input-sm" name="table-search"}}
+            {{input value=searchText type="search" class="form-control input-sm"}}
             {{#if searchText}}
               <span class="input-group-btn">
                 <button class="btn btn-sm bg-default" {{action 'clearSearch'}}><i class="icon icon-close"/></button>
@@ -60,15 +60,15 @@
           </div>
         </div>
         <div class="lacsso col span-4">
-          {{page-numbers content=pagedContent class="lacsso pull-right" pageCountContent=pageCountContent}}
+          {{page-numbers content=pagedContent class="lacsso pull-right no-select" pageCountContent=pageCountContent}}
         </div>
       </div>
     {{/if}}
 
     <tr class="lacsso fixed-header">
       {{#if bulkActions}}
-        <th width="30" class="text-center">
-          {{check-box classNames="lacsso select-all-check" click=(action "selectAll")}}
+        <th width="40" class="text-center">
+          {{check-box classNames="lacsso select-all-check" checked=isAll}}
         </th>
       {{/if}}
       {{#each headers as | header |}}
@@ -89,7 +89,7 @@
     {{#each pagedContent as |content|}}
       <tr>
         {{#if bulkActions}}
-          <td width='40' class="lacsso select-for-action">
+          <td width="40" class="lacsso select-for-action">
             {{check-box nodeId=content.id}}
           </td>
         {{/if}}
@@ -101,6 +101,10 @@
           {{/each}}
         {{/if}}
       </tr>
+    {{else}}
+      {{#if hasBlock}}
+        {{yield content}}
+      {{/if}}
     {{/each}}
   </tbody>
 

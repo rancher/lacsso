@@ -176,7 +176,6 @@ textarea {
   text-align: center;
   background-color: #eee;
   border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
 .input-group-addon input[type="radio"],
@@ -184,20 +183,8 @@ textarea {
   margin-top: 0;
 }
 
-.input-group .form-control:first-child,
-.input-group-addon:first-child {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
 .input-group-addon:first-child {
   border-right: 0;
-}
-.input-group .form-control:last-child,
-.input-group-addon:last-child,
-.input-group-btn:last-child > .btn,
-.input-group-btn:first-child > .btn:not(:first-child) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 .input-group-addon:last-child {
