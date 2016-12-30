@@ -15,7 +15,7 @@
             {{#if availableActions}}
               {{#rl-dropdown-container class="dropdown"}}
                 {{#rl-dropdown-toggle class="btn btn-sm btn-primary"}}
-                  Actions <span class="lacsso icon icon-chevron-down" style="position: relative; top: 2px;"></span>
+                  Actions {{#if (gt selectedNodes.length 1)}}({{selectedNodes.length}}) {{/if}}<span class="lacsso icon icon-chevron-down" style="position: relative; top: 2px;"></span>
                 {{/rl-dropdown-toggle}}
 
                 {{#rl-dropdown tagName="ul" class="resource-actions global-actions dropdown-menu dropdown-menu-right" closeOnChildClick="a:link"}}

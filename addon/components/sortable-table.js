@@ -220,6 +220,10 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
     let selectedNodes = this.get('selectedNodes');
 
     if (nodesToRemove.length) {
+      // removeObjects doesn't use ArrayProxy-safe looping
+      if ( typeof nodesToRemove.toArray === 'function' ) {
+        nodesToRemove = nodesToRemove.toArray();
+      }
       selectedNodes.removeObjects(nodesToRemove);
       nodesToRemove.forEach((node) => {
         toggle(node, false);
@@ -245,7 +249,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
     }
   },
 
-  selectionChanged: Ember.observer('selectedNodes.[]', function() {
+  actionsChanged: Ember.observer('selectedNodes.@each.translatedAvailableActions', function() {
     let data = this.get('selectedNodes');
     var out = null;
 
@@ -256,9 +260,6 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
     }
 
     this.set('availableActions', out);
-
-    // @TODO this should be redundant...
-    this.notifyPropertyChange('availableActions');
   }),
 
   mergeBulkActions(nodes) {
@@ -266,7 +267,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
 
     // loop over every selectedNode to find available actions
     nodes.forEach((item) => {
-      let actions = get(item, 'translatedAvaileableActions').filter((action) => {
+      let actions = get(item, 'translatedAvailableActions').filter((action) => {
         return action.enabled && action.bulkable;
       });
 
@@ -286,7 +287,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
     var localActions =   [];
 
     // no others selected just push the availabe actions out
-    localActions = get(node, 'translatedAvaileableActions').filter((action) => {
+    localActions = get(node, 'translatedAvailableActions').filter((action) => {
       return action.enabled;
     });
 
