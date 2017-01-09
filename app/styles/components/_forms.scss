@@ -120,7 +120,7 @@ textarea {
 
     .input-label {
         @extend .btn;
-        @extend .gutless;
+        // @extend .gutless;
         display: block;
     }
 }

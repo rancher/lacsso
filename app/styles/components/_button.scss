@@ -38,7 +38,8 @@
         position: relative;
         display: inline-block;
         border-radius: 0;
-        margin-left: -1px;
+        margin-left: -8px;
+        border: solid 2px $brand-accent;
 
 
         &:first-child {
@@ -53,13 +54,42 @@
         &.active {
           @extend .bg-primary;
         }
+
+        &:focus {
+          z-index: 2;
+        }
     }
 
     &.action-menu {
         .btn {
             // padding: 10px 15px;
             font-size: .75em;
+            margin-left: -6px;
+
+            .dropdown {
+              &:first-child {
+              margin-left: 0;
+            }
+
+            &:last-child {
+              position: relative;
+
+              &:before {
+                content: "";
+                background: rgba(0,0,0,.5);
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                top: 0;
+              }
+            }
+          }
         }
+    }
+
+    .dropdown {
+      
     }
 }
 
@@ -98,4 +128,91 @@
 .btn-lg, .btn-group-lg > .btn {
   padding: 18px 30px;
   font-size: 1.25em;
+}
+
+//pagination
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  // margin: $line-height-computed 0;
+  border-radius: 2px;
+
+  > li {
+    display: inline; // Remove list-style and block-level defaults
+    > a,
+    > span {
+      position: relative;
+      float: left; // Collapse white-space
+      // padding: $padding-base-vertical $padding-base-horizontal;
+      // line-height: $line-height-base;
+      text-decoration: none;
+      // color: $pagination-color;
+      // background-color: $pagination-bg;
+      // border: 1px solid $pagination-border;
+      margin-left: -1px;
+    }
+    &:first-child {
+      > a,
+      > span {
+        margin-left: 0;
+        border-radius: 0 0 0 2px;
+      }
+    }
+    &:last-child {
+      > a,
+      > span {
+        border-radius: 0 2px 0 0;
+      }
+    }
+  }
+
+  // > li > a,
+  // > li > span {
+  //   &:hover,
+  //   &:focus {
+  //     z-index: 2;
+  //     color: $pagination-hover-color;
+  //     background-color: $pagination-hover-bg;
+  //     border-color: $pagination-hover-border;
+  //   }
+  // }
+
+  // > .active > a,
+  // > .active > span {
+  //   &,
+  //   &:hover,
+  //   &:focus {
+  //     z-index: 3;
+  //     color: $pagination-active-color;
+  //     background-color: $pagination-active-bg;
+  //     border-color: $brand-accent;
+  //     cursor: default;
+  //   }
+  // }
+
+  > .disabled {
+    > span,
+    > span:hover,
+    > span:focus,
+    > a,
+    > a:hover,
+    > a:focus {
+      @extend .bg-disabled;
+      // border-color: $pagination-disabled-border;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Sizing
+// --------------------------------------------------
+
+// Large
+.pagination-lg {
+  // @include pagination-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-large);
+}
+
+// Small
+.pagination-sm {
+  // @include pagination-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $border-radius-small);
 }

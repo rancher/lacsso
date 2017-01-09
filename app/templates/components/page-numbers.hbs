@@ -1,46 +1,28 @@
 <div class="pagination-container">
-  <ul class="lacsso pagination pagination-sm">
+  <div class="btn-group btn-group-sm">
     {{#if (gte content.page 2)}}
-      <li class="arrow prev enabled-arrow">
-        <a href="#" {{action "pageClicked" 1}}>&laquo;</a>
-      </li>
+      <a class="arrow prev enabled-arrow btn" href="#" {{action "pageClicked" 1}}>&laquo;</a>
     {{else}}
-      <li class="arrow prev disabled">
-        <a href="#">&laquo;</a>
-      </li>
+      <a class="arrow prev disabled btn" href="#">&laquo;</a>
     {{/if}}
 
     {{#if canStepBackward}}
-      <li class="arrow prev enabled-arrow">
-        <a href="#" {{action "incrementPage" -1}}>&lt;</a>
-      </li>
+      <a class="arrow prev enabled-arrow btn" href="#" {{action "incrementPage" -1}}>&lt;</a>
     {{else}}
-      <li class="arrow prev disabled">
-        <a href="#" {{action "incrementPage" -1}}>&lt;</a>
-      </li>
+      <a class="arrow prev disabled btn" href="#" {{action "incrementPage" -1}}>&lt;</a>
     {{/if}}
 
-    <li>
-      <div class="lacsso overview-text">{{pageCountContent}}</div>
-    </li>
+    <div class="overview-text btn">{{pageCountContent}}</div>
 
     {{#if canStepForward}}
-      <li class="arrow next enabled-arrow">
-        <a href="#" {{action "incrementPage" 1}}>&gt;</a>
-      </li>
+      <a class="arrow next enabled-arrow btn" href="#" {{action "incrementPage" 1}}>&gt;</a>
     {{else}}
-      <li class="arrow next disabled">
-        <a href="#" {{action "incrementPage" 1}}>&gt;</a>
-      </li>
+      <a class="arrow next disabled btn" href="#" {{action "incrementPage" 1}}>&gt;</a>
     {{/if}}
     {{#if (lt content.page content.totalPages)}}
-      <li class="arrow prev enabled-arrow">
-        <a href="#" {{action "pageClicked" content.totalPages}}>&raquo;</a>
-      </li>
+      <a class="arrow prev enabled-arrow btn" href="#" {{action "pageClicked" content.totalPages}}>&raquo;</a>
     {{else}}
-      <li class="arrow prev disabled">
-        <a href="#">&raquo;</a>
-      </li>
+      <a class="arrow prev disabled btn" href="#">&raquo;</a>
     {{/if}}
-  </ul>
+  </div>
 </div>

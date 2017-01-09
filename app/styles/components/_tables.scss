@@ -42,7 +42,19 @@ table {
 
   thead {
     tr {
-      background-color: $mid-grey;
+      width: 100%;
+      box-sizing: border-box;
+      border-width: 0 0 3px 0;
+      border-color: rgba($mid-grey, .2);
+      border-radius: 0;
+      background: rgba($light-grey, .45);
+      outline: none;
+      transition: all ease-in-out .3s;
+
+      th {
+        border-width: 0 0 3px 0;
+        border-color: rgba($mid-grey, .2);
+      }
     }
   }
 
