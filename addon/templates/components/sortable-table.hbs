@@ -1,6 +1,6 @@
-<table class="fixed lacsso grid sortable-table">
+<table class="fixed grid sortable-table">
   <thead>
-    <tr class="lacsso fixed-header-placeholder">
+    <tr class="fixed-header-placeholder">
       {{#if bulkActions}}
         <th class="lacsso" width="40"></th>
       {{/if}}
@@ -9,13 +9,13 @@
       {{/each}}
     </tr>
     {{#if bulkActions}}
-      <div class="lacsso fixed-header-actions row">
-        <div class="lacsso col span-4">
-          <div class="lacsso container-actions">
+      <div class="fixed-header-actions row">
+        <div class="col span-4">
+          <div class="container-actions">
             {{#if availableActions}}
               {{#rl-dropdown-container class="dropdown"}}
                 {{#rl-dropdown-toggle class="btn btn-sm btn-primary"}}
-                  Actions {{#if (gt selectedNodes.length 1)}}({{selectedNodes.length}}) {{/if}}<span class="lacsso icon icon-chevron-down" style="position: relative; top: 2px;"></span>
+                  Actions {{#if (gt selectedNodes.length 1)}}({{selectedNodes.length}}) {{/if}}<span class="icon icon-chevron-down" style="position: relative; top: 2px;"></span>
                 {{/rl-dropdown-toggle}}
 
                 {{#rl-dropdown tagName="ul" class="resource-actions global-actions dropdown-menu dropdown-menu-right" closeOnChildClick="a:link"}}
@@ -41,34 +41,34 @@
               {{/rl-dropdown-container}}
             {{else}}
               <button class="btn btn-sm btn-primary" disabled>
-                Actions <span class="lacsso icon icon-chevron-down" style="position: relative; top: 2px;"></span>
+                Actions <span class="icon icon-chevron-down" style="position: relative; top: 2px;"></span>
               </button>
             {{/if}}
           </div>
         </div>
-        <div class="lacsso col span-4">
-          <div class="lacsso input-group">
-            <span class="input-group-addon">
-              <label style="display: table-cell; font-weight: normal;">Search:</label>
+        <div class="col span-4">
+          <div class="row inline-form gutless">
+            <span class="col span-3 input-label bg-default input-sm">
+              <label>Search:</label>
             </span>
-            {{input value=searchText type="search" class="form-control input-sm"}}
+            {{input value=searchText type="search" class="col span-8 input-sm"}}
             {{#if searchText}}
-              <span class="input-group-btn">
+              <span class="col span-1">
                 <button class="btn btn-sm bg-default" {{action 'clearSearch'}}><i class="icon icon-close"/></button>
               </span>
             {{/if}}
           </div>
         </div>
-        <div class="lacsso col span-4">
-          {{page-numbers content=pagedContent class="lacsso pull-right no-select" pageCountContent=pageCountContent}}
+        <div class="col span-4">
+          {{page-numbers content=pagedContent class="pull-right no-select" pageCountContent=pageCountContent}}
         </div>
       </div>
     {{/if}}
 
-    <tr class="lacsso fixed-header">
+    <tr class="fixed-header">
       {{#if bulkActions}}
         <th width="40" class="text-center">
-          {{check-box classNames="lacsso select-all-check" checked=isAll}}
+          {{check-box classNames="select-all-check" checked=isAll}}
         </th>
       {{/if}}
       {{#each headers as | header |}}
@@ -89,7 +89,7 @@
     {{#each pagedContent as |content|}}
       <tr>
         {{#if bulkActions}}
-          <td width="40" class="lacsso select-for-action">
+          <td width="40" class="select-for-action">
             {{check-box nodeId=content.id}}
           </td>
         {{/if}}

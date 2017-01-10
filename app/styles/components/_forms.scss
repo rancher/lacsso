@@ -8,7 +8,7 @@
 //   border-radius: 3px;
 // }
 select {
-  display: block;
+    display: block;
     width: 100%;
     height: 50px;
     background-image: none;
@@ -19,6 +19,7 @@ select {
     border-width: 2px;
     border-color: rgba(204, 209, 211, 0.5);
 }
+
 form {
     display: block;
     position: relative;
@@ -29,7 +30,7 @@ label {
 }
 
 input[type='checkbox'] {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 input[type='text'],
@@ -105,13 +106,11 @@ textarea {
     .inline-label {
         padding: 15px 0;
     }
-
     .btn {
         border-radius: 0;
         overflow: hidden;
-        padding: 16px;
+        // padding: 16px;
         position: relative;
-
         &:after {
             content: "";
             position: absolute;
@@ -119,14 +118,27 @@ textarea {
             right: 0;
             bottom: 0;
             height: 3px;
-            background-color: rgba(0,0,0,.3);
+            background-color: rgba(0, 0, 0, .3);
         }
     }
-
     .input-label {
         @extend .btn;
         // @extend .gutless;
         display: block;
+        
+        &.input-xs {
+            padding: 2px 3px;
+            line-height: initial;
+            font-size: .65em;
+        }
+        &.input-sm {
+            padding: 5px 10px;
+            font-size: 0.87em;
+        }
+        &.input-lg {
+            padding: 18px 30px;
+            font-size: 1.25em;
+        }
     }
 }
 
@@ -136,93 +148,113 @@ textarea {
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
 .input-group {
-  position: relative;
-  display: table;
-  border-collapse: separate;
+    position: relative;
+    display: table;
+    border-collapse: separate;
 }
 
 .input-group .form-control {
-  position: relative;
-  z-index: 2;
-  float: left;
-  width: 100%;
-  margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
 }
 
 .input-group .form-control:focus {
-  z-index: 3;
+    z-index: 3;
 }
 
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
-  display: table-cell;
+    display: table-cell;
 }
+
 .input-group-addon:not(:first-child):not(:last-child),
 .input-group-btn:not(:first-child):not(:last-child),
 .input-group .form-control:not(:first-child):not(:last-child) {
-  border-radius: 0;
+    border-radius: 0;
 }
 
 .input-group-addon,
 .input-group-btn {
-  width: 1%;
-  white-space: nowrap;
-  vertical-align: middle;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
 }
 
 .input-group-addon {
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1;
-  color: #555;
-  text-align: center;
-  background-color: #eee;
-  border: 1px solid #ccc;
+    @extend .input-label;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    text-align: center;
 }
 
 .input-group-addon input[type="radio"],
 .input-group-addon input[type="checkbox"] {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .input-group-addon:first-child {
-  border-right: 0;
+    border-right: 0;
 }
 
 .input-group-addon:last-child {
-  border-left: 0;
+    border-left: 0;
 }
 
 .input-group-btn {
-  position: relative;
-  font-size: 0;
-  white-space: nowrap;
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
 }
 
 .input-group-btn > .btn {
-  position: relative;
+    position: relative;
 }
 
 .input-group-btn > .btn + .btn {
-  margin-left: -1px;
+    margin-left: -1px;
 }
 
 .input-group-btn > .btn:hover,
 .input-group-btn > .btn:focus,
 .input-group-btn > .btn:active {
-  z-index: 2;
+    z-index: 2;
 }
 
 .input-group-btn:first-child > .btn,
 .input-group-btn:first-child > .btn-group {
-  margin-right: -1px;
+    margin-right: -1px;
 }
 
 .input-group-btn:last-child > .btn,
 .input-group-btn:last-child > .btn-group {
-  z-index: 2;
-  margin-left: -1px;
+    z-index: 2;
+    margin-left: -1px;
+}
+
+//input sizes
+.input-xs,
+input.input-xs {
+    padding: 2px 3px;
+    line-height: initial;
+    font-size: .65em;
+}
+
+.input-sm,
+input.input-sm {
+    padding: 5px 10px;
+    font-size: 0.87em;
+}
+
+.input-lg,
+input.input-lg {
+    padding: 18px 30px;
+    font-size: 1.25em;
 }
