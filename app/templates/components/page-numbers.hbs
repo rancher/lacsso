@@ -1,28 +1,28 @@
 <div class="pagination-container">
   <div class="btn-group btn-group-sm">
     {{#if (gte content.page 2)}}
-      <a class="arrow prev enabled-arrow btn" href="#" {{action "pageClicked" 1}}>&laquo;</a>
+      <a class="arrow prev enabled-arrow btn bg-default" href="#" {{action "pageClicked" 1}}><span class="icon icon-chevron-beginning"></span></a>
     {{else}}
-      <a class="arrow prev disabled btn" href="#">&laquo;</a>
+      <a class="arrow prev bg-disabled btn" href="#"><span class="icon icon-chevron-beginning"></span></a>
     {{/if}}
 
     {{#if canStepBackward}}
-      <a class="arrow prev enabled-arrow btn" href="#" {{action "incrementPage" -1}}>&lt;</a>
+      <a class="arrow prev enabled-arrow btn bg-default" href="#" {{action "incrementPage" -1}}><span class="icon icon-chevron-left"></span></a>
     {{else}}
-      <a class="arrow prev disabled btn" href="#" {{action "incrementPage" -1}}>&lt;</a>
+      <a class="arrow prev bg-disabled btn" href="#" {{action "incrementPage" -1}}><span class="icon icon-chevron-left"></span></a>
     {{/if}}
 
-    <div class="overview-text btn">{{pageCountContent}}</div>
+    <div class="overview-text btn bg-default">{{pageCountContent}}</div>
 
     {{#if canStepForward}}
-      <a class="arrow next enabled-arrow btn" href="#" {{action "incrementPage" 1}}>&gt;</a>
+      <a class="arrow next enabled-arrow btn bg-default" href="#" {{action "incrementPage" 1}}><span class="icon icon-chevron-right"></span></a>
     {{else}}
-      <a class="arrow next disabled btn" href="#" {{action "incrementPage" 1}}>&gt;</a>
+      <a class="arrow next bg-disabled btn" href="#" {{action "incrementPage" 1}}><span class="icon icon-chevron-right"></span></a>
     {{/if}}
     {{#if (lt content.page content.totalPages)}}
-      <a class="arrow prev enabled-arrow btn" href="#" {{action "pageClicked" content.totalPages}}>&raquo;</a>
+      <a class="arrow prev enabled-arrow btn bg-default" href="#" {{action "pageClicked" content.totalPages}}><span class="icon icon-chevron-end"></span></a>
     {{else}}
-      <a class="arrow prev disabled btn" href="#">&raquo;</a>
+      <a class="arrow prev bg-disabled btn" href="#"><span class="icon icon-chevron-end"></span></a>
     {{/if}}
   </div>
 </div>

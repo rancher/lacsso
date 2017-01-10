@@ -82,8 +82,8 @@
 }
 
 .bg-disabled {
-  background-color: $mid-grey;
-  color: $dark-grey;
+  background-color: rgba($mid-grey, .65);
+  color: $mid-grey;
 }
 
 .bg-primary {

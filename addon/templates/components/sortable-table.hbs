@@ -14,7 +14,7 @@
           <div class="container-actions">
             {{#if availableActions}}
               {{#rl-dropdown-container class="dropdown"}}
-                {{#rl-dropdown-toggle class="btn btn-sm btn-primary"}}
+                {{#rl-dropdown-toggle class="btn btn-sm bg-primary"}}
                   Actions {{#if (gt selectedNodes.length 1)}}({{selectedNodes.length}}) {{/if}}<span class="icon icon-chevron-down" style="position: relative; top: 2px;"></span>
                 {{/rl-dropdown-toggle}}
 
@@ -40,7 +40,7 @@
                 {{/rl-dropdown}}
               {{/rl-dropdown-container}}
             {{else}}
-              <button class="btn btn-sm btn-primary" disabled>
+              <button class="btn btn-sm bg-primary" disabled>
                 Actions <span class="icon icon-chevron-down" style="position: relative; top: 2px;"></span>
               </button>
             {{/if}}

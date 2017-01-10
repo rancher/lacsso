@@ -38,8 +38,8 @@
         position: relative;
         display: inline-block;
         border-radius: 0;
-        margin-left: -8px;
-        border: solid 2px $brand-accent;
+        // margin-left: -4px;
+        // border: solid 1px $brand-accent;
 
 
         &:first-child {
@@ -128,4 +128,11 @@
 .btn-lg, .btn-group-lg > .btn {
   padding: 18px 30px;
   font-size: 1.25em;
+}
+
+
+//diabled
+.btn-disabled, .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    @extend .bg-disabled;
+    cursor: not-allowed;
 }
