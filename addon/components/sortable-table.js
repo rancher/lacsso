@@ -13,6 +13,8 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
   sortBy:            null,
   descending:        false,
   headers:           null,
+  prefix:            false,
+  suffix:            false,
   bulkActions:       true,
   search:            true,
   paging:            true,
@@ -77,6 +79,19 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
   sortableContent: Ember.computed.alias('body'),
   pagedContent: pagedArray('filtered', {pageBinding:  "page", perPageBinding:  "perPage"}),
 
+  // For data-title properties on <td>s
+  dt: Ember.computed('headers.@each.{name,displayName}', function() {
+    let out = {};
+    this.get('headers').forEach((header) => {
+      let name = get(header,'name');
+      if ( name ) {
+        out[name] = get(header, 'displayName') + ': ';
+      }
+    });
+
+    return out;
+  }),
+
   searchFields: Ember.computed('headers.@each.{searchField,name}', function() {
     let out = [];
 
@@ -114,7 +129,7 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
     let searchText =  (this.get('searchText')||'').trim().toLowerCase();
 
     if ( searchText.length ) {
-      let searchTokens = searchText.split(/\s*,\s*/);
+      let searchTokens = searchText.split(/\s*[, ]\s*/);
 
       for ( let j = 0 ; j < searchTokens.length ; j++ ) {
         let token = searchTokens[j];

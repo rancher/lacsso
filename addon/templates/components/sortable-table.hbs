@@ -4,7 +4,7 @@
       {{#if bulkActions}}
         <th class="lacsso" width="40"></th>
       {{/if}}
-      {{#each headers as | header idx|}}
+      {{#each headers as |header idx|}}
         <th class="lacsso" width={{if header.width header.width}}></th>
       {{/each}}
     </tr>
@@ -92,6 +92,9 @@
     </tr>
   </thead>
   <tbody class="lacsso">
+    {{#if prefix}}
+      {{yield null 'prefix'}}
+    {{/if}}
     {{#each pagedContent as |content|}}
       <tr>
         {{#if bulkActions}}
@@ -100,7 +103,7 @@
           </td>
         {{/if}}
         {{#if hasBlock}}
-          {{yield content 'row'}}
+          {{yield content 'row' dt}}
         {{else}}
           {{#each headers as |header|}}
             <td data-title={{header.displayName}} data-id={{content.id}}>{{select-property content header.name}}</td>
@@ -112,6 +115,8 @@
         {{yield null 'norows'}}
       {{/if}}
     {{/each}}
+    {{#if suffix}}
+      {{yield null 'suffix'}}
+    {{/if}}
   </tbody>
-
 </table>
