@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Mixin.create({
   sortableContent: Ember.computed.alias('model'),
-  sorts: null,
+  headers: null,
   sortBy: null,
   descending: false,
 
@@ -30,14 +30,14 @@ export default Ember.Mixin.create({
     },
   },
 
-  currentSort: Ember.computed('sortBy','sorts.@each.{name}', function() {
-    var sorts = this.get('sorts');
-    if ( sorts )
+  currentSort: Ember.computed('sortBy','headers.@each.{sortBy}', function() {
+    var headers = this.get('headers');
+    if ( headers )
     {
-      var sort = sorts[this.get('sortBy')];
-      if ( sort )
+      var header = headers.findBy('name', this.get('sortBy'));
+      if ( header )
       {
-        return sort;
+        return header.sort;
       }
     }
   }),

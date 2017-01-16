@@ -47,7 +47,7 @@ table {
       border-width: 0 0 3px 0;
       border-color: rgba($mid-grey, .2);
       border-radius: 0;
-      background: rgba($light-grey, .45);
+      background: $light-grey;
       outline: none;
       transition: all ease-in-out .3s;
 
@@ -55,6 +55,10 @@ table {
         border-width: 0 0 3px 0;
         border-color: rgba($mid-grey, .2);
         text-align: left;
+
+        &.select-for-action {
+          text-align: center;
+        }
       }
     }
   }
