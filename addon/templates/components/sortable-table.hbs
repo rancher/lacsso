@@ -23,7 +23,7 @@
                     <li class="resource-actions-tabbable"><a tabindex="-1" id="resource-actions-first" aria-label="Select an Action below"></a></li>
                     {{#each availableActions as | action index|}}
                       {{#if action.disabled}}
-                        <li class="disabled lacsso">
+                        <li class="disabled">
                           <a href="#" onclick="return false;" tabindex={{index}}>
                             {{if action.bulkActionName action.bulkActionName action.translatedLabel}}
                             <i class="{{action.icon}}"></i>
