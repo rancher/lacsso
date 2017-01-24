@@ -16,7 +16,7 @@
               {{#if availableActions}}
                 {{#rl-dropdown-container class="dropdown lacsso"}}
                   {{#rl-dropdown-toggle class="btn btn-sm bg-primary lacsso"}}
-                    Actions {{#if (gt selectedNodes.length 1)}}({{selectedNodes.length}}) {{/if}}<span class="icon icon-chevron-down" style="position: relative; top: 2px;"></span>
+                    {{t 'generic.actions'}} {{#if (gt selectedNodes.length 1)}}({{selectedNodes.length}}) {{/if}}<span class="icon icon-chevron-down" style="position: relative; top: 2px;"></span>
                   {{/rl-dropdown-toggle}}
 
                   {{#rl-dropdown tagName="ul" class="resource-actions global-actions dropdown-menu dropdown-menu-right lacsso" closeOnChildClick="a:link"}}
@@ -42,7 +42,7 @@
                 {{/rl-dropdown-container}}
               {{else}}
                 <button class="btn btn-sm bg-primary lacsso" disabled>
-                  Actions <span class="icon icon-chevron-down" style="position: relative; top: 2px;"></span>
+                  {{t 'generic.actions'}} <span class="icon icon-chevron-down" style="position: relative; top: 2px;"></span>
                 </button>
               {{/if}}
             </div>
@@ -52,7 +52,7 @@
           {{#if search}}
             <div class="row inline-form gutless lacsso">
               <span class="col span-3 input-label bg-default input-sm lacsso">
-                <label>Search:</label>
+                <label>{{t 'generic.search'}}:</label>
               </span>
               {{input value=searchText type="search" class="col span-8 input-sm lacsso"}}
               {{#if searchText}}
@@ -65,7 +65,7 @@
         </div>
         <div class="col span-4 lacsso">
           {{#if paging}}
-            {{page-numbers content=pagedContent class="pull-right no-select" pageCountContent=pageCountContent}}
+            {{page-numbers content=pagedContent class="pull-right no-select" indexTo=indexTo indexFrom=indexFrom totalCount=filtered.length}}
           {{/if}}
         </div>
       </div>
@@ -86,6 +86,7 @@
           name=header.name
           isActions=header.isActions
           label=header.displayName
+          translationKey=header.translationKey
           classNames=header.classNames
           }}
       {{/each}}
