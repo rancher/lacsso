@@ -136,9 +136,12 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
 
         out = out.filter((item) => {
           for ( let i = 0 ; i < searchFields.length ; i++ ) {
-            let val = (item.get(searchFields[i])+'').toLowerCase();
-            if ( val && val.indexOf(token) >= 0) {
-              return true;
+            let field = searchFields[i];
+            if ( field ) {
+              let val = (item.get(field)+'').toLowerCase();
+              if ( val && val.indexOf(token) >= 0) {
+                return true;
+              }
             }
           }
         });
