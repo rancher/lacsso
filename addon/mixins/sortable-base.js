@@ -36,9 +36,11 @@ export default Ember.Mixin.create({
     if ( headers )
     {
       var header = headers.findBy('name', this.get('sortBy'));
-      let sort = get(header,'sort');
-      if ( sort && sort.length) {
-        return sort;
+      if ( header ) {
+        let sort = get(header,'sort');
+        if ( sort && sort.length) {
+          return sort;
+        }
       }
     }
 

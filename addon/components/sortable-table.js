@@ -92,6 +92,20 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
     return out;
   }),
 
+  // Pick a new sort if the current column disappears.
+  headersChanged: Ember.observer('headers.@each.name', function() {
+    let sortBy = this.get('sortBy');
+    let headers = this.get('headers')||[];
+    if ( headers && headers.get('length') ) {
+      let cur = headers.findBy('name', sortBy);
+      if ( !cur ) {
+        Ember.run.next(this, function() {
+          this.send('changeSort', headers.get('firstObject.name'));
+        });
+      }
+    }
+  }),
+
   searchFields: Ember.computed('headers.@each.{searchField,name}', function() {
     let out = [];
 
