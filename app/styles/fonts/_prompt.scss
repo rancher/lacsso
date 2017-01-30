@@ -2,19 +2,19 @@
 
 /* prompt-regular - latin */
 @font-face {
-  font-family: 'Prompt';
+  font-family: 'Prompt', sans-serif;
   font-style: normal;
   font-weight: 400;
   src: local('Prompt'), local('Prompt-Regular'),
-       url(fonts/prompt-v1-latin-regular.woff2) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url(fonts/prompt-v1-latin-regular.woff) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url(fonts/prompt-regular.woff2) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url(fonts/prompt-regular.woff) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* prompt-700 - latin */
 @font-face {
-  font-family: 'Prompt';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Prompt Bold'), local('Prompt-Bold'),
-       url(fonts/prompt-v1-latin-700.woff2) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url(fonts/prompt-v1-latin-700.woff) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-family: 'Prompt', sans-serif;
+  font-style: bold;
+  font-weight: 600;
+  src: local('Prompt Semi Bold'), local('Prompt-Semi-Bold'),
+       url(fonts/prompt-semi-bold.woff2) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url(fonts/prompt-semi-bold.woff) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
