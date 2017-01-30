@@ -1,8 +1,9 @@
 import Ember from 'ember';
+const { get } = Ember;
 
 export default Ember.Mixin.create({
   sortableContent: Ember.computed.alias('model'),
-  sorts: null,
+  headers: null,
   sortBy: null,
   descending: false,
 
@@ -30,31 +31,26 @@ export default Ember.Mixin.create({
     },
   },
 
-  currentSort: Ember.computed('sortBy','sorts.@each.{name}', function() {
-    var sorts = this.get('sorts');
-    if ( sorts )
+  currentSort: Ember.computed('sortBy','headers.@each.{sortBy}', function() {
+    var headers = this.get('headers');
+    if ( headers )
     {
-      var sort = sorts[this.get('sortBy')];
-      if ( sort )
-      {
-        return sort;
+      var header = headers.findBy('name', this.get('sortBy'));
+      if ( header ) {
+        let sort = get(header,'sort');
+        if ( sort && sort.length) {
+          return sort;
+        }
       }
     }
+
+    return ['id'];
   }),
 
-  arranged: Ember.computed('sortableContent.[]','currentSort','descending', function(){
-    var content = this.get('sortableContent')||[];
-    var currentSort = this.get('currentSort');
-    var out;
-    if ( currentSort )
-    {
-      out = content.sortBy.apply(content, currentSort);
-    }
-    else
-    {
-      out = content.slice();
-    }
+  _sorted: Ember.computed.sort('sortableContent','currentSort'),
 
+  arranged: Ember.computed('_sorted.[]','descending', function(){
+    let out = this.get('_sorted');
     if ( this.get('descending') )
     {
       return out.reverse();

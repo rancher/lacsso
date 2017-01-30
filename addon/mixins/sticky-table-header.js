@@ -7,12 +7,11 @@ const tableProps = {
 };
 
 export default Ember.Mixin.create(ThrottledResize, {
-  bulkActions: false,
   didInsertElement() {
     let $offset = Ember.$(this.element).find('thead tr').offset().top;
     this.buildTableWidths();
 
-    if (this.get('bulkActions')) {
+    if (this.get('showHeader')) {
       Ember.$(this.element).find('thead .fixed-header-actions, thead .fixed-header').css('width', Ember.$(this.element).find('table').outerWidth());
     }
     Ember.$(window).scroll(() => {
@@ -37,7 +36,7 @@ export default Ember.Mixin.create(ThrottledResize, {
       Ember.$(ths[idx]).attr('width', Ember.$(th).outerWidth());
     });
 
-    if (this.get('bulkActions')) {
+    if (this.get('showHeader')) {
       Ember.$(this.element).find('thead .fixed-header-actions, thead .fixed-header').css({
         'width': Ember.$(this.element).find('table').width(),
       });
@@ -54,9 +53,9 @@ export default Ember.Mixin.create(ThrottledResize, {
     let $table       = Ember.$(this.element).find('table');
     let $actionRow   = $table.find('thead .fixed-header-actions');
     let $fixedHeader = $table.find('thead tr.fixed-header');
-    let bulkActions  = this.get('bulkActions');
+    let showHeader  = this.get('showHeader');
 
-    if (bulkActions) {
+    if (showHeader) {
       $actionRow.css({
         'position': 'fixed',
         'top': 0,
@@ -65,7 +64,7 @@ export default Ember.Mixin.create(ThrottledResize, {
     }
     $fixedHeader.css({
       'position': 'fixed',
-      'top': bulkActions ? tableProps.actionsHeight : 0,
+      'top': showHeader ? tableProps.actionsHeight : 0,
       'height': tableProps.fixedHeaderHeight,
     });
 
@@ -79,7 +78,7 @@ export default Ember.Mixin.create(ThrottledResize, {
     let $actionRow   = $table.find('thead .fixed-header-actions');
     let $fixedHeader = $table.find('thead tr.fixed-header');
 
-    if (this.get('bulkActions')) {
+    if (this.get('showHeader')) {
       $actionRow.css({
         'position': 'relative',
         'top': '',

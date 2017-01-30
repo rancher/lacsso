@@ -3,16 +3,21 @@ import layout from '../templates/components/sortable-table';
 import Sortable from '../mixins/sortable-base';
 import StickyHeader from '../mixins/sticky-table-header';
 import pagedArray from 'ember-cli-pagination/computed/paged-array';
-import {isMore, isRange} from '../utils/platform';
+import {isAlternate, isMore, isRange} from '../utils/platform';
 
 const {get,set} = Ember;
 
 export default Ember.Component.extend(Sortable, StickyHeader, {
   layout,
   body:              null,
-  sorts:             null,
   sortBy:            null,
+  descending:        false,
   headers:           null,
+  prefix:            false,
+  suffix:            false,
+  bulkActions:       true,
+  search:            true,
+  paging:            true,
   bulkActionsList:   null,
   bulkActionCallee:  null,
   perPage:           10,
@@ -23,10 +28,17 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
   searchText:        null,
   page:              1,
 
+  showHeader: Ember.computed.or('bulkActions','search','paging'),
+
   init: function() {
     this._super(...arguments);
 
+    if ( !this.get('paging') ) {
+      this.set('perPage', 100000);
+    }
+
     this.set('selectedNodes', []);
+    this._updateFiltered();
 
     Ember.run.schedule('afterRender', () => {
       let tbody = Ember.$(this.element).find('table tbody');
@@ -50,8 +62,19 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
       this.set('searchText', '');
     },
 
-    executeBulkAction(name) {
-      this.get('bulkActionCallee')(name, this.get('selectedNodes'));
+    executeBulkAction(name, e) {
+      e.preventDefault();
+      if (isAlternate(e)) {
+        var aa = this.get('availableActions');
+        var action = aa.findBy('action', name);
+        if (get(action, 'altAction')) {
+          this.get('bulkActionCallee')(get(action, 'altAction'), this.get('selectedNodes'));
+        } else {
+          this.get('bulkActionCallee')(name, this.get('selectedNodes'));
+        }
+      } else {
+        this.get('bulkActionCallee')(name, this.get('selectedNodes'));
+      }
     },
 
     executeAction(action) {
@@ -67,31 +90,91 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
   sortableContent: Ember.computed.alias('body'),
   pagedContent: pagedArray('filtered', {pageBinding:  "page", perPageBinding:  "perPage"}),
 
-  filtered: Ember.computed('arranged.[]','searchText', function() {
-    let out = this.get('arranged').slice();
-    let searchText =  (this.get('searchText')||'').trim().toLowerCase();
-    let searchFields = [];
-
-    if ( searchText.length ) {
-      this.get('headers').forEach((header) => {
-        let field = get(header, 'searchField') ||  get(header,'name');
-        if ( field && typeof field === 'string' && field.length ) {
-          searchFields.push(field);
-        }
-      });
-
-      out = out.filter((item) => {
-        for ( let i = 0 ; i < searchFields.length ; i++ ) {
-          let val = (item.get(searchFields[i])+'').toLowerCase();
-          if ( val && val.indexOf(searchText) >= 0) {
-            return true;
-          }
-        }
-      });
-    }
+  // For data-title properties on <td>s
+  dt: Ember.computed('headers.@each.{name,displayName}', function() {
+    let out = {};
+    this.get('headers').forEach((header) => {
+      let name = get(header,'name');
+      if ( name ) {
+        out[name] = get(header, 'displayName') + ': ';
+      }
+    });
 
     return out;
   }),
+
+  // Pick a new sort if the current column disappears.
+  headersChanged: Ember.observer('headers.@each.name', function() {
+    let sortBy = this.get('sortBy');
+    let headers = this.get('headers')||[];
+    if ( headers && headers.get('length') ) {
+      let cur = headers.findBy('name', sortBy);
+      if ( !cur ) {
+        Ember.run.next(this, function() {
+          this.send('changeSort', headers.get('firstObject.name'));
+        });
+      }
+    }
+  }),
+
+  searchFields: Ember.computed('headers.@each.{searchField,name}', function() {
+    let out = [];
+
+    this.get('headers').forEach((header) => {
+      let field = get(header, 'searchField');
+      if ( field ) {
+        if ( typeof field === 'string' ) {
+          out.addObject(field);
+        } else if ( Ember.isArray(field) ) {
+          out.addObjects(field);
+        }
+      } else if ( field === false ) {
+        // Don't add the name
+      } else {
+        out.addObject(get(header,'name'));
+      }
+    });
+
+    return out;
+  }),
+
+  filtered: null,
+  _filteredShouldChangeContent: Ember.observer('arranged.[]', function() {
+    // Throttle so it's updated even if continuously changing
+    Ember.run.throttle(this, '_updateFiltered', 100, false);
+  }),
+  _filteredShouldChangeSearch: Ember.observer('searchText', function() {
+    // Debounce so it's not updating while typing even if continuously changing
+    Ember.run.debounce(this, '_updateFiltered', 100, false);
+  }),
+
+  _updateFiltered() {
+    let out = this.get('arranged').slice();
+    let searchFields = this.get('searchFields');
+    let searchText =  (this.get('searchText')||'').trim().toLowerCase();
+
+    if ( searchText.length ) {
+      let searchTokens = searchText.split(/\s*[, ]\s*/);
+
+      for ( let j = 0 ; j < searchTokens.length ; j++ ) {
+        let token = searchTokens[j];
+
+        out = out.filter((item) => {
+          for ( let i = 0 ; i < searchFields.length ; i++ ) {
+            let field = searchFields[i];
+            if ( field ) {
+              let val = (item.get(field)+'').toLowerCase();
+              if ( val && val.indexOf(token) >= 0) {
+                return true;
+              }
+            }
+          }
+        });
+      }
+    }
+
+    this.set('filtered', out);
+  },
 
   pagedContentChanged: Ember.observer('pagedContent.[]', function() {
     // Remove selected items not in the current content
@@ -114,12 +197,13 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
   }),
 
   pageCountContent: Ember.computed('indexFrom','indexTo','pagedContent.totalPages', function() {
-    let from = this.get('indexFrom');
-    let to = this.get('indexTo');
-    let count = this.get('filtered.length');
+    let from = this.get('indexFrom') || 0;
+    let to = this.get('indexTo') || 0;
+    let count = this.get('filtered.length') || 0;
+    let pages = this.get('pagedContent.totalPages') || 0;
     let out = '';
 
-    if ( this.get('pagedContent.totalPages') <= 1 ) {
+    if ( pages <= 1 ) {
       out = `${count} Item` + (count === 1 ? '' : 's');
     } else {
       out = `${from} - ${to} of ${count}`;
@@ -138,6 +222,10 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
       let page = Math.ceil(last/perPage);
       this.set('page', page);
     }
+  }),
+
+  sortKeyChanged: Ember.observer('sortBy', function() {
+    this.set('page',1);
   }),
 
   // ------
