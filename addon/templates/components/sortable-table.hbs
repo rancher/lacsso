@@ -30,8 +30,8 @@
                           </a>
                         </li>
                       {{else}}
-                        <li {{action 'executeBulkAction' action.action}}>
-                          <a href="#" tabindex={{index}}>
+                        <li>
+                          <a href="#" onclick={{action 'executeBulkAction' action.action}} tabindex={{index}}>
                             {{if action.bulkActionName action.bulkActionName action.translatedLabel}}
                             <i class="{{action.icon}}"></i>
                           </a>

@@ -3,7 +3,7 @@ import layout from '../templates/components/sortable-table';
 import Sortable from '../mixins/sortable-base';
 import StickyHeader from '../mixins/sticky-table-header';
 import pagedArray from 'ember-cli-pagination/computed/paged-array';
-import {isMore, isRange} from '../utils/platform';
+import {isAlternate, isMore, isRange} from '../utils/platform';
 
 const {get,set} = Ember;
 
@@ -62,8 +62,19 @@ export default Ember.Component.extend(Sortable, StickyHeader, {
       this.set('searchText', '');
     },
 
-    executeBulkAction(name) {
-      this.get('bulkActionCallee')(name, this.get('selectedNodes'));
+    executeBulkAction(name, e) {
+      e.preventDefault();
+      if (isAlternate(e)) {
+        var aa = this.get('availableActions');
+        var action = aa.findBy('action', name);
+        if (get(action, 'altAction')) {
+          this.get('bulkActionCallee')(get(action, 'altAction'), this.get('selectedNodes'));
+        } else {
+          this.get('bulkActionCallee')(name, this.get('selectedNodes'));
+        }
+      } else {
+        this.get('bulkActionCallee')(name, this.get('selectedNodes'));
+      }
     },
 
     executeAction(action) {
