@@ -1,20 +1,22 @@
 // Google Font Downloader thing: https://google-webfonts-helper.herokuapp.com/
 
-/* prompt-regular - latin */
+/* prompt-300 - latin */
 @font-face {
-  font-family: 'Prompt', sans-serif;
+  font-family: 'Prompt';
   font-style: normal;
-  font-weight: 400;
-  src: local('Prompt'), local('Prompt-Regular'),
-       url(fonts/prompt-regular.woff2) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url(fonts/prompt-regular.woff) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-weight: normal;
+  src: local('Prompt Light'), local('Prompt-Light'),
+       url('fonts/prompt-v1-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('fonts/prompt-v1-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* prompt-700 - latin */
+
+/* prompt-600 - latin */
 @font-face {
-  font-family: 'Prompt', sans-serif;
-  font-style: bold;
-  font-weight: 600;
-  src: local('Prompt Semi Bold'), local('Prompt-Semi-Bold'),
-       url(fonts/prompt-semi-bold.woff2) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url(fonts/prompt-semi-bold.woff) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-family: 'Prompt';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Prompt SemiBold'), local('Prompt-SemiBold'),
+       url('fonts/prompt-v1-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('fonts/prompt-v1-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
